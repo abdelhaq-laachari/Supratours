@@ -8,11 +8,11 @@ const bcrypt = require("bcryptjs");
 // @access  Public
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, age, address, city, phone, email, password } = req.body;
 
   //   check if any of the fields are empty
 
-  if (!firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !age || !city || !phone || !email || !password) {
     res.status(400);
     throw new Error("Please fill in all fields");
   }

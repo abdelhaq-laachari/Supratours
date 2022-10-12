@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// i have an error message show when i try to register new user 
 const userSchema = mongoose.Schema(
   {
     firstName: {
@@ -18,6 +19,21 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please add your password"],
+    },
+    age: {
+      type: String,
+      required: [true, "Please select your age"],
+    },
+    address: {
+      type: String,
+    },
+    city: {
+      type: String,
+      required: [true, "Please select your city"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Please enter your phone number"],
     },
   },
   {
