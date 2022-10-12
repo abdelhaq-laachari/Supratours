@@ -2,7 +2,7 @@ const express = require('express'); // import express
 const dotenv = require('dotenv').config(); // import dotenv
 const colors = require('colors'); // import colors
 const {errorHandler} = require('./middleware/errorMiddleware'); // custom error handler
-const port = process.env.PORT || 5000; // set our port
+const port = process.env.PORT || 6000; // set our port
 const app = express();
 const connectDB = require('./config/db'); // import db connection
 
