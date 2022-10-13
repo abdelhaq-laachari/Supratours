@@ -10,7 +10,7 @@ const {
 
 router.route("/register").post(registerAdmin);
 router.route("/login").post(loginAdmin);
-router.route("/getAdmin").get(protectAdmin, getAdmin);
-router.route("/updateMe").put(updateProfile);
+router.route("/getMe").get(protectAdmin, getAdmin);
+router.route("/updateMe").put(protectAdmin,updateProfile);
 
 module.exports = router;

@@ -75,6 +75,24 @@ const loginAdmin = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Update admin information
+// @route   POST /admin/update
+// @access  Private
+
+const updateProfile = asyncHandler(async (req, res) => {
+    const adminId = req.admin.id
+  const admin = await Admin.findById(adminId);
+
+  if (!admin) {
+    res.status(404);
+    throw new Error("Admin not found");
+  }
+  const updateProfile = await Admin.findByIdAndUpdate(req.admin.id, req.body, {
+    new: true,
+  });
+  res.status(200).json(updateProfile);
+});
+
 // @desc    Get admin information
 // @route   GET /admin/get
 // @access  Private
@@ -90,33 +108,6 @@ const getAdmin = asyncHandler(async (req, res) => {
     lastName,
     email,
   });
-});
-
-// @desc    Update admin information
-// @route   POST /admin/update
-// @access  Private
-
-const updateProfile = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
-
-  const admin = await Admin.findOne({ email });
-
-  if (!admin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
-
-  if (admin) {
-    res.status(201).json({
-      _id: admin.id,
-      firstName: admin.firstName,
-      lastName: admin.lastName,
-      email: admin.email,
-    });
-  } else {
-    res.status(400);
-    throw new Error("Wrong data");
-  }
 });
 
 // @desc    Generate token for admin
