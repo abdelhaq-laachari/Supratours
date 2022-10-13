@@ -10,8 +10,14 @@ const {
 } = require("../controllers/postController");
 
 
-router.route('/').get(protect,getPosts).post(protect,createPosts);
-router.route('/:id').get(protect,getOnePosts).put(protect,updatePosts).delete(protect,deletePosts);
+router.route('/')
+.get(protect,getPosts)
+.post(protect,createPosts);
+//
+router.route('/:id')
+.get(protect,getOnePosts)
+.put(protect,updatePosts)
+.delete(protect,deletePosts);
 
 
 

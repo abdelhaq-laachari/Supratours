@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 // @desc    Register a new user
-// @route   POST /api/users
+// @route   POST /users
 // @access  Public
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -55,7 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Authentication a user
-// @route   POST /api/users/login
+// @route   POST /users/login
 // @access  Public
 
 const loginUser = asyncHandler(async (req, res) => {
@@ -79,7 +79,7 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get user data
-// @route   GET /api/users/me
+// @route   GET /users/me
 // @access  Private
 
 const getMe = asyncHandler(async (req, res) => {
@@ -93,7 +93,7 @@ const getMe = asyncHandler(async (req, res) => {
 });
 
 // @desc    Logout user
-// @route   POST /api/users/logout
+// @route   POST /users/logout
 // @access  Private
 
 const logoutUser = asyncHandler(async (req, res) => {
@@ -101,7 +101,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Logout user
-// @route   POST /api/users/logout
+// @route   POST /users/logout
 // @access  Private
 
 const generateToken = (id) => {
@@ -115,4 +115,5 @@ module.exports = {
   loginUser,
   getMe,
   logoutUser,
+  generateToken,
 };
