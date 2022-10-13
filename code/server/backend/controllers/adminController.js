@@ -2,7 +2,6 @@ const asyncHandler = require("express-async-handler");
 const Admin = require("../models/adminModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { generateToken } = require("./userController");
 
 // @desc    Register a new admin
 // @route   POST /admin/register
@@ -76,13 +75,62 @@ const loginAdmin = asyncHandler(async (req, res) => {
   }
 });
 
-const updateProfile = asyncHandler(async(req,res) =>{
-    const { firstName, lastName, email, password } = req.body;
+// @desc    Get admin information
+// @route   GET /admin/get
+// @access  Private
 
-    const admin = await Admin.findOne({email})
-})
+const getAdmin = asyncHandler(async (req, res) => {
+  const { firstName, lastName, email, _id } = await Admin.findById(
+    req.admin.id
+  );
+
+  res.status(200).json({
+    id: _id,
+    firstName,
+    lastName,
+    email,
+  });
+});
+
+// @desc    Update admin information
+// @route   POST /admin/update
+// @access  Private
+
+const updateProfile = asyncHandler(async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
+  const admin = await Admin.findOne({ email });
+
+  if (!admin) {
+    res.status(404);
+    throw new Error("Admin not found");
+  }
+
+  if (admin) {
+    res.status(201).json({
+      _id: admin.id,
+      firstName: admin.firstName,
+      lastName: admin.lastName,
+      email: admin.email,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Wrong data");
+  }
+});
+
+// @desc    Generate token for admin
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
 
 module.exports = {
   registerAdmin,
   loginAdmin,
+  getAdmin,
+  updateProfile,
+  generateToken,
 };

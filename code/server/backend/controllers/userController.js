@@ -8,11 +8,20 @@ const bcrypt = require("bcryptjs");
 // @access  Public
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, age, address, city, phone, email, password } = req.body;
+  const { firstName, lastName, age, address, city, phone, email, password } =
+    req.body;
 
   //   check if any of the fields are empty
 
-  if (!firstName || !lastName || !age || !city || !phone || !email || !password) {
+  if (
+    !firstName ||
+    !lastName ||
+    !age ||
+    !city ||
+    !phone ||
+    !email ||
+    !password
+  ) {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
@@ -100,9 +109,7 @@ const logoutUser = asyncHandler(async (req, res) => {
   res.json({ message: "User has logged out" });
 });
 
-// @desc    Logout user
-// @route   POST /users/logout
-// @access  Private
+// @desc    Generate token for user
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
