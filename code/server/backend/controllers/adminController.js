@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/adminModel");
+const Bus = require("../models/busModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -75,26 +76,8 @@ const loginAdmin = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Update admin information
-// @route   POST /admin/update
-// @access  Private
-
-const updateProfile = asyncHandler(async (req, res) => {
-    const adminId = req.admin.id
-  const admin = await Admin.findById(adminId);
-
-  if (!admin) {
-    res.status(404);
-    throw new Error("Admin not found");
-  }
-  const updateProfile = await Admin.findByIdAndUpdate(req.admin.id, req.body, {
-    new: true,
-  });
-  res.status(200).json(updateProfile);
-});
-
 // @desc    Get admin information
-// @route   GET /admin/get
+// @route   GET /admin/getMe
 // @access  Private
 
 const getAdmin = asyncHandler(async (req, res) => {
@@ -110,6 +93,56 @@ const getAdmin = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Update admin information
+// @route   POST /admin/updateMe
+// @access  Private
+
+const updateProfile = asyncHandler(async (req, res) => {
+  const adminId = req.admin.id;
+  const admin = await Admin.findById(adminId);
+
+  if (!admin) {
+    res.status(404);
+    throw new Error("Admin not found");
+  }
+  const updateProfile = await Admin.findByIdAndUpdate(req.admin.id, req.body, {
+    new: true,
+  });
+  res.status(200).json(updateProfile);
+});
+
+// @desc    Update admin information
+// @route   POST /admin/updateMe
+// @access  Private
+
+const addBus = asyncHandler(async (req, res) => {
+  const { busName, numberOfSeats } = req.body;
+
+  // check if any of the fields are empty
+  if (!busName || !numberOfSeats) {
+    res.status(400);
+    throw new Error("Please fill in all field");
+  }
+
+  // create bus
+  const bus = await Bus.create({
+    busName,
+    numberOfSeats,
+  });
+
+  // if bus crated send a success message
+  if (bus) {
+    res.status(201).json({
+      _id: bus.id,
+      busName: bus.busName,
+      numberOfSeats: bus.numberOfSeats,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Something went wrong");
+  }
+});
+
 // @desc    Generate token for admin
 
 const generateToken = (id) => {
@@ -123,5 +156,6 @@ module.exports = {
   loginAdmin,
   getAdmin,
   updateProfile,
+  addBus,
   generateToken,
 };

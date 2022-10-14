@@ -6,7 +6,7 @@ const busSchema = mongoose.Schema(
       type: String,
       required: [true, "Please enter the bus name"],
     },
-    NumberOfSeats: {
+    numberOfSeats: {
       type: Number,
       required: [true, "Please enter number of seats"],
     },
