@@ -143,6 +143,25 @@ const addBus = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Update bus information
+// @route   POST /admin/updateBus
+// @access  Private
+
+const updateBus = asyncHandler(async (req, res) => {
+  const bus = await Bus.findById(req.params.id);
+
+  if (!bus) {
+    res.status(404);
+    throw new Error("Bus not found");
+  }
+
+  // update bus
+  const updateBus = await Bus.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  res.status(200).json(updateBus);
+});
+
 // @desc    Generate token for admin
 
 const generateToken = (id) => {
@@ -157,5 +176,6 @@ module.exports = {
   getAdmin,
   updateProfile,
   addBus,
+  updateBus,
   generateToken,
 };

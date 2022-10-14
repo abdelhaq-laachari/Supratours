@@ -47,14 +47,15 @@ const updatePosts = asyncHandler(async (req, res) => {
     throw new Error('Post not found');
   }
 
+  // check for user
   const user = await User.findById(req.user.id)
 
-  // check for user
   if(!user){
-    res.status(401)
+    res.status(404)
     throw new Error('User not found')
   }
 
+  // make condition that allow only the user that crated this post can update it
   if(post.user.toString() !== user.id){
     res.status(401)
     throw new Error('User not authorized to update this post')
