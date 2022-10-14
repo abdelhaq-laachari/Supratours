@@ -94,7 +94,7 @@ const getAdmin = asyncHandler(async (req, res) => {
 });
 
 // @desc    Update admin information
-// @route   POST /admin/updateMe
+// @route   PUT /admin/updateMe
 // @access  Private
 
 const updateProfile = asyncHandler(async (req, res) => {
@@ -143,8 +143,18 @@ const addBus = asyncHandler(async (req, res) => {
   }
 });
 
+
+// @desc    get buses 
+// @route   GET /admin/buses
+// @access  Private
+
+const getBuses = asyncHandler(async(req,res) =>{
+  const buses = await Bus.find()
+  res.status(200).json(buses)
+})
+
 // @desc    Update bus information
-// @route   POST /admin/updateBus
+// @route   PUT /admin/updateBus
 // @access  Private
 
 const updateBus = asyncHandler(async (req, res) => {
@@ -176,6 +186,7 @@ module.exports = {
   getAdmin,
   updateProfile,
   addBus,
+  getBuses,
   updateBus,
   generateToken,
 };
