@@ -9,7 +9,8 @@ const {
   addBus,
   getBuses,
   getBus,
-  updateBus
+  updateBus,
+  deleteBus,
 } = require("../controllers/adminController");
 
 router.route("/register").post(registerAdmin);
@@ -20,5 +21,6 @@ router.route("/addBus").post(protectAdmin,addBus);
 router.route("/getBuses").get(protectAdmin,getBuses);
 router.route("/getBus/:id").get(protectAdmin,getBus);
 router.route("/updateBus/:id").put(protectAdmin,updateBus);
+router.route("/deleteBus/:id").delete(protectAdmin,deleteBus);
 
 module.exports = router;

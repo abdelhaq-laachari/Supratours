@@ -143,30 +143,28 @@ const addBus = asyncHandler(async (req, res) => {
   }
 });
 
-
-// @desc    get buses 
+// @desc    get buses
 // @route   GET /admin/buses
 // @access  Private
 
-const getBuses = asyncHandler(async(req,res) =>{
-  const buses = await Bus.find()
-  res.status(200).json(buses)
-})
+const getBuses = asyncHandler(async (req, res) => {
+  const buses = await Bus.find();
+  res.status(200).json(buses);
+});
 
 // @desc    get bus by id
 // @route   GET /admin/bus/:id
 // @access  Private
 
-const getBus = asyncHandler(async(req,res) =>{
-  const bus = await Bus.findById(req.params.id)
+const getBus = asyncHandler(async (req, res) => {
+  const bus = await Bus.findById(req.params.id);
 
-  if(!bus){
-    res.status(404)
-    throw new Error('Bus not found')
+  if (!bus) {
+    res.status(404);
+    throw new Error("Bus not found");
   }
-  res.status(200).json(bus)
-})
-
+  res.status(200).json(bus);
+});
 
 // @desc    Update bus information
 // @route   PUT /admin/updateBus/:id
@@ -187,6 +185,21 @@ const updateBus = asyncHandler(async (req, res) => {
   res.status(200).json(updateBus);
 });
 
+// @desc    Delete bus
+// @route   DELETE /admin/deleteBus/:id
+// @access  Private
+
+const deleteBus = asyncHandler(async (req, res) => {
+  const bus = await Bus.findById(req.params.id);
+
+  if (!bus) {
+    res.status(404);
+    throw new Error("Bus not found");
+  }
+  await bus.remove();
+  res.status(200).json({message: `Bus has been deleted`})
+});
+
 // @desc    Generate token for admin
 
 const generateToken = (id) => {
@@ -204,5 +217,6 @@ module.exports = {
   getBuses,
   getBus,
   updateBus,
+  deleteBus,
   generateToken,
 };
