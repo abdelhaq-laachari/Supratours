@@ -8,6 +8,7 @@ const {
   updateProfile,
   addBus,
   getBuses,
+  getBus,
   updateBus
 } = require("../controllers/adminController");
 
@@ -17,6 +18,7 @@ router.route("/getMe").get(protectAdmin, getAdmin);
 router.route("/updateMe").put(protectAdmin,updateProfile);
 router.route("/addBus").post(protectAdmin,addBus);
 router.route("/getBuses").get(protectAdmin,getBuses);
+router.route("/getBus/:id").get(protectAdmin,getBus);
 router.route("/updateBus/:id").put(protectAdmin,updateBus);
 
 module.exports = router;

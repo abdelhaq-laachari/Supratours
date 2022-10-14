@@ -153,8 +153,23 @@ const getBuses = asyncHandler(async(req,res) =>{
   res.status(200).json(buses)
 })
 
+// @desc    get bus by id
+// @route   GET /admin/bus/:id
+// @access  Private
+
+const getBus = asyncHandler(async(req,res) =>{
+  const bus = await Bus.findById(req.params.id)
+
+  if(!bus){
+    res.status(404)
+    throw new Error('Bus not found')
+  }
+  res.status(200).json(bus)
+})
+
+
 // @desc    Update bus information
-// @route   PUT /admin/updateBus
+// @route   PUT /admin/updateBus/:id
 // @access  Private
 
 const updateBus = asyncHandler(async (req, res) => {
@@ -187,6 +202,7 @@ module.exports = {
   updateProfile,
   addBus,
   getBuses,
+  getBus,
   updateBus,
   generateToken,
 };
