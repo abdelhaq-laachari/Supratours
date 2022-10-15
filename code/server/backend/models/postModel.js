@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const reqString = {
+  type: String,
+  required: [true, "This field is required"],
+};
+
 const postSchema = mongoose.Schema(
   {
     user: {
@@ -7,10 +12,7 @@ const postSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
-    title: {
-      type: String,
-      required: [true, "Please add a title"],
-    },
+    title: reqString,
   },
   {
     timestamps: true,
