@@ -1,20 +1,7 @@
 const mongoose = require("mongoose");
+const {reqString,reqDate,reqNumber} = require('../helpers/required/required')
 
-const reqString = {
-  type: String,
-  required: [true, "This field is required"],
-};
-
-const reqDate = {
-  type: Date,
-  required: [true, "This field is required"],
-};
-
-const reqNumber = {
-  type: Number,
-  required: [true, "This field is required"],
-};
-
+// schema for station point 
 const stationSchema = mongoose.Schema(
   {
     nameStation: reqString,
@@ -26,6 +13,7 @@ const stationSchema = mongoose.Schema(
   }
 );
 
+// trip schema
 const tripSchema = mongoose.Schema(
   {
     startPoint: reqString,
@@ -33,8 +21,13 @@ const tripSchema = mongoose.Schema(
     startDate: reqDate,
     endDate: reqDate,
     price: reqNumber,
-    availableSeats: reqNumber,
-    station: stationSchema,
+    // availableSeats: reqNumber,
+    // station: [stationSchema],
+    bus:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref:"Bus"
+    }
   },
   {
     timestamps: true,

@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Admin = require("../models/adminModel");
 const Bus = require("../models/busModel");
+const Trip = require("../models/tripModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -111,8 +112,8 @@ const updateProfile = asyncHandler(async (req, res) => {
   res.status(200).json(updateProfile);
 });
 
-// @desc    Update admin information
-// @route   POST /admin/updateMe
+// @desc    Add buses 
+// @route   POST /admin/addBus
 // @access  Private
 
 const addBus = asyncHandler(async (req, res) => {
@@ -200,6 +201,47 @@ const deleteBus = asyncHandler(async (req, res) => {
   res.status(200).json({message: `Bus has been deleted`})
 });
 
+
+// @desc    Add trips 
+// @route   POST /admin/addTrip
+// @access  Private
+
+const addTrip = asyncHandler(async (req, res) => {
+  const { startPoint, endPoint, startDate, endDate, price, station, bus } = req.body;
+
+  // check if any of the fields are empty
+  if (!startPoint || !endPoint || !startDate || !endDate || !price || !station || !bus ) {
+    res.status(400);
+    throw new Error("Please fill in all field");
+  }
+
+  // create bus
+  const trip = await Trip.create({
+    startPoint,
+    endPoint,
+    startDate,
+    endDate,
+    price,
+    bus,
+  });
+
+  // if bus crated send a success message
+  if (trip) {
+    res.status(201).json({
+      _id: trip.id,
+      startPoint: trip.startPoint,
+      endPoint: trip.endPoint,
+      startDate: trip.startDate,
+      endDate: trip.endDate,
+      price: trip.price,
+      bus: trip.bus,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Something went wrong");
+  }
+});
+
 // @desc    Generate token for admin
 
 const generateToken = (id) => {
@@ -218,5 +260,6 @@ module.exports = {
   getBus,
   updateBus,
   deleteBus,
+  addTrip,
   generateToken,
 };
