@@ -22,7 +22,7 @@ const tripSchema = mongoose.Schema(
     endDate: reqDate,
     price: reqNumber,
     // availableSeats: reqNumber,
-    // station: [stationSchema],
+    station: [stationSchema],
     bus:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
