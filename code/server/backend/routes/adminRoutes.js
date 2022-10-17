@@ -11,15 +11,13 @@ const {
   getBus,
   updateBus,
   deleteBus,
-  addTrip,
 } = require("../controllers/adminController");
 
 router.route("/register").post(registerAdmin);
 router.route("/login").post(loginAdmin);
 router.route("/getMe").get(protectAdmin, getAdmin);
 router.route("/updateMe").put(protectAdmin,updateProfile);
-router.route("/addBus").post(protectAdmin,addBus);
-router.route("/addTrip").post(protectAdmin,addTrip); // i need to fix this route if i remove the protect method the add bus work clean and this is wrong
+router.route("/addBus").post(protectAdmin,addBus); // i need to fix this route if i remove the protect method the add bus work clean and this is wrong
 router.route("/getBuses").get(protectAdmin,getBuses);
 router.route("/getBus/:id").get(protectAdmin,getBus);
 router.route("/updateBus/:id").put(protectAdmin,updateBus);
