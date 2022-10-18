@@ -5,6 +5,12 @@ const {
   reqNumber,
 } = require("../helpers/required/required");
 
+const stationSchema = mongoose.Schema({
+  nameStation: reqString,
+  arrivalDate: reqDate,
+  breakTime: reqNumber,
+});
+
 // trip schema
 const tripSchema = mongoose.Schema(
   {
@@ -14,9 +20,7 @@ const tripSchema = mongoose.Schema(
     endDate: reqDate,
     price: reqNumber,
     // availableSeats: reqNumber,
-    station: [
-      { nameStation: reqString, arrivalDate: reqDate, breakTime: reqNumber },
-    ],
+    station: [stationSchema],
     bus: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

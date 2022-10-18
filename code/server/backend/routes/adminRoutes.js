@@ -11,6 +11,9 @@ const {
   getBus,
   updateBus,
   deleteBus,
+  addTrip,
+  updateTrip,
+  nestedTrip
 } = require("../controllers/adminController");
 
 router.route("/register").post(registerAdmin);
@@ -22,5 +25,8 @@ router.route("/getBuses").get(protectAdmin,getBuses);
 router.route("/getBus/:id").get(protectAdmin,getBus);
 router.route("/updateBus/:id").put(protectAdmin,updateBus);
 router.route("/deleteBus/:id").delete(protectAdmin,deleteBus);
+router.route("/addTrip").post(protectAdmin,addTrip);
+router.route("/updateTrip/:id").put(protectAdmin,updateTrip);
+router.route("/nestedTrip/:id").put(protectAdmin,nestedTrip);
 
 module.exports = router;
