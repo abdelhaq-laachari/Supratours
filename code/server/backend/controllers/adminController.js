@@ -257,9 +257,6 @@ const addTrip = asyncHandler(async (req, res) => {
   }
 });
 
-const addNested = asyncHandler(async (req, res) => {
-  const station = [ req.body.nameStation, req.body.arrivalDate, req.body.breakTime ];
-});
 
 // @desc    Update trips
 // @route   POST /admin/updateTrip
@@ -276,22 +273,6 @@ const updateTrip = asyncHandler(async (req, res) => {
   const updateTrip = await Trip.findByIdAndUpdate(tripId, req.body, {
     new: true,
   });
-  res.status(200).json(updateTrip);
-});
-
-// @desc    Update trips
-// @route   POST /admin/updateTrip
-// @access  Private
-
-const nestedTrip = asyncHandler(async (req, res) => {
-  const tripId = req.params.id;
-  const trip = await Trip.findById(tripId);
-
-  if (!trip) {
-    res.status(404);
-    throw new Error("Trip not found");
-  }
-  const updateTrip = await Trip.findByIdAndUpdate(tripId,{$push : {"station$": addNested}} );
   res.status(200).json(updateTrip);
 });
 
@@ -315,6 +296,5 @@ module.exports = {
   deleteBus,
   addTrip,
   updateTrip,
-  nestedTrip,
   generateToken,
 };
