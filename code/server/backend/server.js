@@ -11,8 +11,8 @@ connectDB(); // connect to db
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
 
-app.use('/posts', require('./routes/postRoutes')); // use postRoutes
-app.use('/users', require('./routes/userRoutes')); // use userRoutes
+app.use('/post', require('./routes/postRoutes')); // use postRoutes
+app.use('/user', require('./routes/userRoutes')); // use userRoutes
 app.use('/admin',require('./routes/adminRoutes')) // use userRoutes
 app.use(errorHandler); // Error handler
 

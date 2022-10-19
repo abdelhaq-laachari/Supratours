@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel.js");
+const Trip = require("../models/tripModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -109,6 +110,23 @@ const logoutUser = asyncHandler(async (req, res) => {
   res.json({ message: "User has logged out" });
 });
 
+// @desc    Search for trip
+// @route   POST /users/SearchTrip
+// @access  Private
+
+const searchTrip = asyncHandler(async (req, res) => {
+  const { startPoint, endPoint, startDate } = req.body;
+
+  const trip = await Trip.find({ startPoint, endPoint, startDate });
+
+  if (trip) {
+    res.status(201).json(trip);
+  } else {
+    res.status(400);
+    throw new Error("There is no trip available");
+  }
+});
+
 // @desc    Generate token for user
 
 const generateToken = (id) => {
@@ -122,5 +140,6 @@ module.exports = {
   loginUser,
   getMe,
   logoutUser,
+  searchTrip,
   generateToken,
 };
