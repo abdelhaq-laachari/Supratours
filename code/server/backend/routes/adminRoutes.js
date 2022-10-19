@@ -27,6 +27,6 @@ router.route("/updateBus/:id").put(protectAdmin,updateBus);
 router.route("/deleteBus/:id").delete(protectAdmin,deleteBus);
 router.route("/addTrip").post(protectAdmin,addTrip);
 router.route("/updateTrip/:id").put(protectAdmin,updateTrip);
-router.route("/deleteTrip/:id").put(protectAdmin,deleteTrip);
+router.route("/deleteTrip/:id").delete(protectAdmin,deleteTrip);
 
 module.exports = router;
