@@ -13,6 +13,7 @@ const {
   deleteBus,
   addTrip,
   updateTrip,
+  deleteTrip,
 } = require("../controllers/adminController");
 
 router.route("/register").post(registerAdmin);
@@ -26,5 +27,6 @@ router.route("/updateBus/:id").put(protectAdmin,updateBus);
 router.route("/deleteBus/:id").delete(protectAdmin,deleteBus);
 router.route("/addTrip").post(protectAdmin,addTrip);
 router.route("/updateTrip/:id").put(protectAdmin,updateTrip);
+router.route("/deleteTrip/:id").put(protectAdmin,deleteTrip);
 
 module.exports = router;

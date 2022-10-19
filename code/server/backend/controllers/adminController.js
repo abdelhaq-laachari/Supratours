@@ -259,7 +259,7 @@ const addTrip = asyncHandler(async (req, res) => {
 
 
 // @desc    Update trips
-// @route   POST /admin/updateTrip
+// @route   PUT /admin/updateTrip/:id
 // @access  Private
 
 const updateTrip = asyncHandler(async (req, res) => {
@@ -274,6 +274,21 @@ const updateTrip = asyncHandler(async (req, res) => {
     new: true,
   });
   res.status(200).json(updateTrip);
+});
+
+// @desc    Delete trip
+// @route   DELETE /admin/deleteTrip/:id
+// @access  Private
+
+const deleteTrip = asyncHandler(async (req, res) => {
+  const trip = await Trip.findById(req.params.id);
+
+  if (!trip) {
+    res.status(404);
+    throw new Error("Bus not found");
+  }
+  await trip.remove();
+  res.status(200).json({ message: `Trip has been deleted` });
 });
 
 // @desc    Generate token for admin
@@ -296,5 +311,6 @@ module.exports = {
   deleteBus,
   addTrip,
   updateTrip,
+  deleteTrip,
   generateToken,
 };
