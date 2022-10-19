@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel.js");
 const Trip = require("../models/tripModel");
+const Bus = require("../models/busModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -118,10 +119,10 @@ const searchTrip = asyncHandler(async (req, res) => {
   const { startPoint, endPoint, startDate } = req.body;
 
   const trip = await Trip.find({
-    startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1),
-    endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1),
+    startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1).toLowerCase(),
+    endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
-  });
+  }).populate('bus');
 
   if (trip) {
     res.status(201).json(trip);
