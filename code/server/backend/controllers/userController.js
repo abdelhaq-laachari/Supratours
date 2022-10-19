@@ -121,12 +121,12 @@ const searchTrip = asyncHandler(async (req, res) => {
     startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1).toLowerCase(),
     endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
-  }).populate('bus');
+  }).populate('bus', 'busName numberOfSeats');
 
   if (trip) {
     res.status(201).json(trip);
   } else {
-    res.status(400);
+    res.status(404);
     throw new Error("There is no trip available");
   }
 });
