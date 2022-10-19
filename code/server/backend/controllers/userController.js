@@ -117,7 +117,11 @@ const logoutUser = asyncHandler(async (req, res) => {
 const searchTrip = asyncHandler(async (req, res) => {
   const { startPoint, endPoint, startDate } = req.body;
 
-  const trip = await Trip.find({ startPoint, endPoint, startDate });
+  const trip = await Trip.find({
+    startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1),
+    endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1),
+    startDate,
+  });
 
   if (trip) {
     res.status(201).json(trip);

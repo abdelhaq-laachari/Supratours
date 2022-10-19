@@ -236,7 +236,7 @@ const addTrip = asyncHandler(async (req, res) => {
   // create bus
   const trip = await Trip.create({
     startPoint:startPoint.charAt(0).toUpperCase() + startPoint.slice(1),
-    endPoint,
+    endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1),
     startDate,
     endDate,
     startTime,
