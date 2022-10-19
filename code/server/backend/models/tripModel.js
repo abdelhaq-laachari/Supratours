@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
-const {
-  reqString,
-  reqDate,
-  reqNumber,
-} = require("../helpers/required/required");
+const { reqString, reqNumber } = require("../helpers/required/required");
 
 const stationSchema = mongoose.Schema({
   nameStation: reqString,
-  arrivalDate: reqDate,
+  arrivalDate: reqString,
   breakTime: reqNumber,
 });
 
@@ -16,10 +12,11 @@ const tripSchema = mongoose.Schema(
   {
     startPoint: reqString,
     endPoint: reqString,
-    startDate: reqDate,
-    endDate: reqDate,
+    startDate: reqString,
+    endDate: reqString,
+    startTime: reqString,
+    endTime: reqString,
     price: reqNumber,
-    // availableSeats: reqNumber,
     station: [stationSchema],
     bus: {
       type: mongoose.Schema.Types.ObjectId,

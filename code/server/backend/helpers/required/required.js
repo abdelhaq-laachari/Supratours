@@ -6,7 +6,7 @@ const reqString = {
 const reqDate = {
   type: Date,
   required: [true, "This field is required"],
-  get: (value) => value.toDateString(),
+  get: (value) => value.toLocaleString(),
 };
 
 const reqNumber = {

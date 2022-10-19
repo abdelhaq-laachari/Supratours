@@ -210,6 +210,8 @@ const addTrip = asyncHandler(async (req, res) => {
     endPoint,
     startDate,
     endDate,
+    startTime,
+    endTime,
     price,
     station,
     bus,
@@ -221,6 +223,8 @@ const addTrip = asyncHandler(async (req, res) => {
     !endPoint ||
     !startDate ||
     !endDate ||
+    !startTime ||
+    !endTime ||
     !price ||
     !bus
   ) {
@@ -228,12 +232,15 @@ const addTrip = asyncHandler(async (req, res) => {
     throw new Error("Please fill in all field");
   }
 
+
   // create bus
   const trip = await Trip.create({
-    startPoint,
+    startPoint:startPoint.charAt(0).toUpperCase() + startPoint.slice(1),
     endPoint,
     startDate,
     endDate,
+    startTime,
+    endTime,
     price,
     station,
     bus,
@@ -247,6 +254,8 @@ const addTrip = asyncHandler(async (req, res) => {
       endPoint: trip.endPoint,
       startDate: trip.startDate,
       endDate: trip.endDate,
+      startTime: trip.startTime,
+      endTime: trip.endTime,
       price: trip.price,
       station: trip.station,
       bus: trip.bus,
