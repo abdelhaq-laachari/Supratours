@@ -232,11 +232,10 @@ const addTrip = asyncHandler(async (req, res) => {
     throw new Error("Please fill in all field");
   }
 
-
   // create bus
   const trip = await Trip.create({
-    startPoint:startPoint.charAt(0).toUpperCase() + startPoint.slice(1),
-    endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1),
+    startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1).toLowerCase(),
+    endPoint: endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
     endDate,
     startTime,
@@ -248,24 +247,12 @@ const addTrip = asyncHandler(async (req, res) => {
 
   // if bus crated send a success message
   if (trip) {
-    res.status(201).json({
-      _id: trip.id,
-      startPoint: trip.startPoint,
-      endPoint: trip.endPoint,
-      startDate: trip.startDate,
-      endDate: trip.endDate,
-      startTime: trip.startTime,
-      endTime: trip.endTime,
-      price: trip.price,
-      station: trip.station,
-      bus: trip.bus,
-    });
+    res.status(201).json(trip);
   } else {
     res.status(400);
     throw new Error("Something went wrong");
   }
 });
-
 
 // @desc    Update trips
 // @route   PUT /admin/updateTrip/:id
