@@ -18,6 +18,9 @@ const tripSchema = mongoose.Schema(
     endTime: reqString,
     price: reqNumber,
     station: [stationSchema],
+    status: {
+      type: Boolean
+    },
     bus: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

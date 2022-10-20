@@ -214,6 +214,7 @@ const addTrip = asyncHandler(async (req, res) => {
     endTime,
     price,
     station,
+    status,
     bus,
   } = req.body;
 
@@ -242,6 +243,7 @@ const addTrip = asyncHandler(async (req, res) => {
     endTime,
     price,
     station,
+    status,
     bus,
   });
 

@@ -1,10 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel.js");
 const Trip = require("../models/tripModel");
+const Bus = require("../models/busModel");
 const Booking = require("../models/bookingModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { populate } = require("../models/userModel.js");
+const { populate, findByIdAndUpdate } = require("../models/userModel.js");
 
 // @desc    Register a new user
 // @route   POST /users
@@ -120,10 +121,12 @@ const searchTrip = asyncHandler(async (req, res) => {
   const { startPoint, endPoint, startDate } = req.body;
 
   const trip = await Trip.find({
-    startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1).toLowerCase(),
-    endPoint:endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
+    startPoint:
+      startPoint.charAt(0).toUpperCase() + startPoint.slice(1).toLowerCase(),
+    endPoint:
+      endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
-  }).populate('bus', 'busName numberOfSeats');
+  }).populate("bus", "busName numberOfSeats");
 
   if (trip) {
     res.status(201).json(trip);
@@ -137,53 +140,68 @@ const searchTrip = asyncHandler(async (req, res) => {
 // @route   POST /users/booking
 // @access  Private
 
-const bookingTrip = asyncHandler(async(req,res)=>{
-  // const {userId, tripId} = req.params.id
-  const userId = User.findById(req.params.idUser)
-  const tripId = Trip.findById(req.params.idTrip)
+const bookingTrip = asyncHandler(async (req, res) => {
+  const userId = await User.findById(req.params.idUser);
+  const tripId = await Trip.findById(req.params.idTrip);
 
-  if(!userId || !tripId){
-    res.status(404)
-    throw new Error("error")
+  const bus = await Bus.findById(tripId.bus);
+  const numberOfSeats = bus.numberOfSeats;
+
+  if (numberOfSeats > 0) {
+    const number = req.body.number;
+    if (!userId || !tripId) {
+      res.status(404);
+      throw new Error("error");
+    }
+
+    const ticket = await Booking.create({
+      user: req.params.idUser,
+      trip: req.params.idTrip,
+    });
+
+    if (ticket) {
+      // res.status(201).json({ message: "trip book successfully" });
+
+      res.status(201).json(numberOfSeats);
+      await Trip.findByIdAndUpdate(tripId,{
+        status:0,
+      })
+      await Bus.findByIdAndUpdate(tripId.bus, {
+        numberOfSeats: numberOfSeats - number,
+      });
+    } else {
+      res.status(400);
+      throw new Error("error 2");
+    }
+  } else {
+    res.status(404);
+    throw new Error("there is no available seats");
   }
-
-  const ticket = await Booking.create({
-    user:req.params.idUser,
-    trip:req.params.idTrip
-  })
-
-  if(ticket){
-    res.status(201).json(ticket)
-  }else{
-    res.status(400)
-    throw new Error('error 2')
-  }
-
-})
+});
 
 // @desc    Display trip that user has book
 // @route   GET /users/myBooking
 // @access  Private
 
-const myBooking = asyncHandler(async(req,res)=>{
-  const userId = req.params.id
-  if(!userId){
-    res.status(404)
-    throw new Error('there is no user with id')
+const myBooking = asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+  if (!userId) {
+    res.status(404);
+    throw new Error("there is no user with id");
   }
 
   const myBookings = await Booking.find().populate({
-    path: 'trip',
-    populate:{path: 'bus'}
-  })
+    path: "trip",
+    populate: { path: "bus" },
+  });
 
-  if(myBookings){
-    res.status(201).json(myBookings)
-  }else{
-    res.status(404)
-    throw new Error('You no booking yet')
+  if (myBookings) {
+    res.status(201).json(myBookings);
+  } else {
+    res.status(404);
+    throw new Error("You no booking yet");
   }
-})
+});
 
 // @desc    Generate token for user
 
