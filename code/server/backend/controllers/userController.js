@@ -128,7 +128,9 @@ const searchTrip = asyncHandler(async (req, res) => {
     startDate,
   }).populate("bus", "busName numberOfSeats");
 
-  if (trip) {
+  const numberOfSeats = trip[0].bus.numberOfSeats;
+
+  if (trip && numberOfSeats > 0) {
     res.status(201).json(trip);
   } else {
     res.status(404);
@@ -163,9 +165,9 @@ const bookingTrip = asyncHandler(async (req, res) => {
       // res.status(201).json({ message: "trip book successfully" });
 
       res.status(201).json(numberOfSeats);
-      await Trip.findByIdAndUpdate(tripId,{
-        status:0,
-      })
+      await Trip.findByIdAndUpdate(tripId, {
+        status: 0,
+      });
       await Bus.findByIdAndUpdate(tripId.bus, {
         numberOfSeats: numberOfSeats - number,
       });
