@@ -4,6 +4,7 @@ const Trip = require("../models/tripModel");
 const Booking = require("../models/bookingModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const { populate } = require("../models/userModel.js");
 
 // @desc    Register a new user
 // @route   POST /users
@@ -160,6 +161,30 @@ const bookingTrip = asyncHandler(async(req,res)=>{
 
 })
 
+// @desc    Display trip that user has book
+// @route   GET /users/myBooking
+// @access  Private
+
+const myBooking = asyncHandler(async(req,res)=>{
+  const userId = req.params.id
+  if(!userId){
+    res.status(404)
+    throw new Error('there is no user with id')
+  }
+
+  const myBookings = await Booking.find().populate({
+    path: 'trip',
+    populate:{path: 'bus'}
+  })
+
+  if(myBookings){
+    res.status(201).json(myBookings)
+  }else{
+    res.status(404)
+    throw new Error('You no booking yet')
+  }
+})
+
 // @desc    Generate token for user
 
 const generateToken = (id) => {
@@ -175,5 +200,6 @@ module.exports = {
   logoutUser,
   searchTrip,
   bookingTrip,
+  myBooking,
   generateToken,
 };
