@@ -5,7 +5,7 @@ const Bus = require("../models/busModel");
 const Booking = require("../models/bookingModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { populate, findByIdAndUpdate } = require("../models/userModel.js");
+const { populate, findByIdAndUpdate, findById } = require("../models/userModel.js");
 
 // @desc    Register a new user
 // @route   POST /users
@@ -205,6 +205,21 @@ const myBooking = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Cancel trip
+// @route   DELETE /users/cancelTrip
+// @access  Private
+
+const cancelTrip = asyncHandler(async(req,res)=>{
+  const trip = await Booking.findById(req.params.tripId)
+
+  if (!trip) {
+    res.status(404);
+    throw new Error("Trip not found");
+  }
+  await trip.remove();
+  res.status(200).json({ message: `Trip has been deleted` });
+})
+
 // @desc    Generate token for user
 
 const generateToken = (id) => {
@@ -221,5 +236,6 @@ module.exports = {
   searchTrip,
   bookingTrip,
   myBooking,
+  cancelTrip,
   generateToken,
 };

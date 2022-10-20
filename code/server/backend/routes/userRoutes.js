@@ -9,6 +9,7 @@ const {
   searchTrip,
   bookingTrip,
   myBooking,
+  cancelTrip,
 } = require("../controllers/userController"); // <--- Import the userController
 const { route } = require("./postRoutes");
 
@@ -19,5 +20,6 @@ router.route("/logout").post(logoutUser); // <--- Create a route for the logoutU
 router.route("/searchTrip").post(protect, searchTrip); // <--- Create a route for the search trip function
 router.route("/booking/:idUser/:idTrip").post(protect,bookingTrip) // <--- Create a route for the booking trip function
 router.route("/myBooking/:id").get(protect,myBooking) // <--- Create a route for the booking trip function
+router.route("/cancelTrip/:tripId").delete(protect,cancelTrip) // <--- Create a route for the cancel trip function
 
 module.exports = router;
