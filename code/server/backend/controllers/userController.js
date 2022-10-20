@@ -5,7 +5,6 @@ const Bus = require("../models/busModel");
 const Booking = require("../models/bookingModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { populate, findByIdAndUpdate, findById } = require("../models/userModel.js");
 
 // @desc    Register a new user
 // @route   POST /users
