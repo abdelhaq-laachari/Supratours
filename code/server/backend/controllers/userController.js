@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel.js");
 const Trip = require("../models/tripModel");
+const Booking = require("../models/bookingModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -131,6 +132,34 @@ const searchTrip = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Booking trip
+// @route   POST /users/booking
+// @access  Private
+
+const bookingTrip = asyncHandler(async(req,res)=>{
+  // const {userId, tripId} = req.params.id
+  const userId = User.findById(req.params.idUser)
+  const tripId = Trip.findById(req.params.idTrip)
+
+  if(!userId || !tripId){
+    res.status(404)
+    throw new Error("error")
+  }
+
+  const ticket = await Booking.create({
+    user:req.params.idUser,
+    trip:req.params.idTrip
+  })
+
+  if(ticket){
+    res.status(201).json(ticket)
+  }else{
+    res.status(400)
+    throw new Error('error 2')
+  }
+
+})
+
 // @desc    Generate token for user
 
 const generateToken = (id) => {
@@ -145,5 +174,6 @@ module.exports = {
   getMe,
   logoutUser,
   searchTrip,
+  bookingTrip,
   generateToken,
 };
