@@ -58,7 +58,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       firstName: user.firstName,
       email: user.email,
-      Token: generateToken(user._id),
+      Token: generateToken(user._id), 
     });
   } else {
     res.status(400);
@@ -125,7 +125,7 @@ const searchTrip = asyncHandler(async (req, res) => {
     endPoint:
       endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
-  }).populate("bus", "busName numberOfSeats");
+  }).populate("bus", "busName numberOfSeats"); 
 
   const numberOfSeats = trip[0].bus.numberOfSeats;
 

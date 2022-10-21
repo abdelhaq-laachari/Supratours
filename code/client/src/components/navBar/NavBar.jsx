@@ -10,7 +10,7 @@ function Navbar() {
   };
 
   return (
-    <header>
+    <header className="shadow-lg">
       <img src="/logo/supratours.png" alt="" className="logo" />
       <nav ref={navRef}>
         <a href="/#">Home</a>

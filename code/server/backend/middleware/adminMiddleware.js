@@ -16,10 +16,12 @@ const protectAdmin = asyncHandler(async (req, res, next) => {
       // verify token
       const decode = jwt.verify(token, process.env.JWT_SECRET);
 
-      // Get user from token
+      // Get admin from token
       req.admin = await Admin.findById(decode.id).select("-password");
-
-      next();
+      if (req.admin) next();
+      else{
+        throw new Error('Not authorized')
+      }
     } catch (error) {
         console.log(error)
         res.status(401)

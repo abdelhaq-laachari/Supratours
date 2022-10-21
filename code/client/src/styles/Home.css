@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.bg {
+  background: linear-gradient(
+      to top,
+      rgb(0, 0, 0, 0.3) 50%,
+      rgb(0, 0, 0, 0.3) 50%
+    ),
+    url(../../public/background/bg2.jpg);
+  height: 50vh;
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 1rem;
+}
