@@ -28,6 +28,7 @@ nav a {
   margin: 0 1rem;
   color: var(--textColor);
   text-decoration: none;
+  font-family: serif;
 }
 
 nav a:hover {
@@ -41,7 +42,7 @@ header .nav-btn {
   border: none;
   outline: none;
   color: var(--textColor);
-  visibility: hidden;
+  display: none;
   opacity: 0;
   font-size: 1.8rem;
 }
@@ -51,10 +52,13 @@ nav {
   display: flex;
   align-items: center;
 }
+.res-sign{
+    display: none;
+}
 
 @media only screen and (max-width: 1024px) {
   header .nav-btn {
-    visibility: visible;
+    display: block;
     opacity: 1;
   }
 
@@ -86,5 +90,11 @@ nav {
 
   nav a {
     font-size: 1.5rem;
+  }
+  .res-sign{
+    display: block;
+  }
+  .sign{
+    display: none;
   }
 }
