@@ -23,6 +23,9 @@ header {
   background-color: var(--mainColor);
   color: var(--textColor);
 }
+header .logo {
+  width: 100px;
+}
 
 nav a {
   margin: 0 1rem;
@@ -52,8 +55,8 @@ nav {
   display: flex;
   align-items: center;
 }
-.res-sign{
-    display: none;
+.res-sign {
+  display: none;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -91,10 +94,10 @@ nav {
   nav a {
     font-size: 1.5rem;
   }
-  .res-sign{
+  .res-sign {
     display: block;
   }
-  .sign{
+  .sign {
     display: none;
   }
 }

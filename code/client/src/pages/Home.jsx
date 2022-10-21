@@ -6,6 +6,8 @@ const Home = () => {
     <>
       <NavBar />
       <h1>hello</h1>
+      <div className="p-2">
+      </div>
     </>
   );
 };
