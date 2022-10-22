@@ -1,12 +1,14 @@
 import React from "react";
 import NavBar from "../components/navBar/NavBar";
+import Background from "../components/video/Background";
 import "../styles/Home.css";
 const Home = () => {
   return (
     <>
-      <NavBar />
-      <div className="flex">
-        <div class="flex items-center w-1/2 bg-red-400 justify-center py-5">
+      <Background />
+      <div className="main">
+        <NavBar />
+        <div class="flex items-center w-full  justify-center py-5">
           <div class="mx-auto w-full max-w-[550px]">
             <form action="https://formbold.com/s/FORM_ID" method="POST">
               <div class="-mx-3 flex flex-wrap">
@@ -124,7 +126,6 @@ const Home = () => {
             </form>
           </div>
         </div>
-        <div className="bg"></div>
       </div>
     </>
   );

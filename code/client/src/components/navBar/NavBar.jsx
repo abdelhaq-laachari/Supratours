@@ -11,7 +11,7 @@ function Navbar() {
 
   return (
     <header className="shadow-lg">
-      <img src="/logo/supratours.png" alt="" className="logo" />
+      <img src="/assets/logo/supratours.png" alt="" className="logo" />
       <nav ref={navRef}>
         <a href="/#">Home</a>
         <a href="/#">Our services</a>
