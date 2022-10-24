@@ -9,9 +9,11 @@
 
 :root {
   --mainColor: rgba(255, 255, 255, 0.139);
+  --responsiveMainColor: rgb(255, 255, 255);
   --mainColorLight: #5767aa;
   --secondaryColor: #db2b39;
   --textColor: rgb(255, 255, 255);
+  --responsiveTextColor: rgb(0, 0, 0);
 }
 
 header {
@@ -19,6 +21,7 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  width: 100%;
   padding: 0 2rem;
   background-color: var(--mainColor);
   color: var(--textColor);
@@ -76,9 +79,11 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    background-color: var(--mainColor);
+    background-color: var(--responsiveMainColor);
+    color: var(--responsiveTextColor);
     transition: 1s;
     transform: translateY(-100vh);
+    z-index: 3;
   }
 
   header .responsive_nav {
@@ -89,10 +94,12 @@ nav {
     position: absolute;
     top: 2rem;
     right: 2rem;
+    color: var(--responsiveTextColor);
   }
 
   nav a {
     font-size: 1.5rem;
+    color: var(--responsiveTextColor);
   }
   .res-sign {
     display: block;
