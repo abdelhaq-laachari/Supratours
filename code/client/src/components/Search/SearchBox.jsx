@@ -2,30 +2,35 @@ import React from "react";
 import AsyncSelect from "react-select/async";
 
 const SearchBox = () => {
-  const options = [
-    { name: "kamal", label: "kamal" },
-    { name: "mohammed", label: "mohammed" },
-    { name: "marouan", label: "marouan" },
-    { name: "amine", label: "amine" },
-    { name: "ayoub", label: "ayoub" },
-  ];
+  const { cities } = require("morocco-cities"); // Import cities from morocco-cities package
+  const newCities = JSON.parse(JSON.stringify(cities)); // Convert cities to JSON format to be able to use it in the component
+  // Create a new array of objects with the name and value of each city
+  const city = newCities.map(function (item) {
+    return { name: item.name, label: item.name };
+  });
+  // handleInputChange function to get the value of the input
   const handleChange = (selectedOption) => {
     console.log("handleChange", selectedOption);
   };
-  const loadOptions = (searchValue, callback) => {
+  // LoadOptions function to get the value of the input and filter the cities 
+  const loadCities = (searchValue, callback) => {
     setTimeout(() => {
-      const filteredOptions = options.filter((option) =>
-        option.label
-          .toLocaleLowerCase()
-          .includes(searchValue.toLocaleLowerCase())
+      const filteredCities = city.filter((item) =>
+        item.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
       );
-      console.log('loadOptions', searchValue, filteredOptions)
-      callback(filteredOptions)
+      console.log("loadCities", searchValue, filteredCities);
+      callback(filteredCities);
     }, 200);
   };
+
   return (
     <div>
-      <AsyncSelect loadOptions={loadOptions} onChange={handleChange} />
+      <AsyncSelect
+        loadOptions={loadCities}
+        defaultOptions={city}
+        isClearable
+        onChange={handleChange}
+      />
     </div>
   );
 };
