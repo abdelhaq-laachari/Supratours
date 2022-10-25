@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mui/x-date-pickers": "^5.0.5",
+    "moment": "^2.29.4"
+  }
+}
