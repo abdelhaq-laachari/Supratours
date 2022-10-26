@@ -4,7 +4,7 @@ import SearchBox from "../components/Search/SearchBox";
 import Background from "../components/video/Background";
 import DatePicker from "../components/datePicker/DatePicker";
 import "../styles/Home.css";
-import Card2 from "../components/cards/Card2";
+import Card from "../components/cards/Card";
 import Image1 from "../assets/svg/image1.svg";
 import Image2 from "../assets/svg/image2.svg";
 import Image3 from "../assets/svg/image3.svg";
@@ -61,7 +61,7 @@ const Home = () => {
           </form>
         </div>
       </section>
-      <section className="flex md:space-y-8 md:flex-col md:pt-7 md:items-center h-screen bg-gray-50">
+      <section className="flex flex-col bg-gray-50 items-center md:pt-7 md:space-y-8 md:h-screen ">
         <div className="divide-y-4 text-3xl text-black font-bold text-center pt-5">
           <h1 className="">
             Get your ticket <span className="text-red-400">fast</span> and{" "}
@@ -69,27 +69,29 @@ const Home = () => {
           </h1>
         </div>
         <hr class="my-8 w-1/2 justify-center h-px bg-gray-300 border-0 dark:bg-gray-700"></hr>
-        <p className="text-center text-xl font-medium ">
-          You can search all of Morocco's destinations with Supr@Tours <br />{" "}
+        <p className="text-center text-base md:text-xl font-medium ">
+          You can search all of Morocco's destinations with Supr@Tours <br />
           thanks to its more than 100 trips, <br /> so you'll never get lost.
         </p>
-        <div className="flex w-11/12 md:flex-row md:justify-center md:space-x-6">
-          <Card2 src={Image1} msg="Book your bus ticket easily" />
-          <Card2 src={Image2} msg="Find your next destination" />
-          <Card2 src={Image3} msg="We're here for you 24/7" />
+        <div className="flex flex-col w-11/12 md:flex-row md:justify-center md:space-x-6">
+          <Card src={Image1} msg="Book your bus ticket easily" />
+          <Card src={Image2} msg="Find your next destination" />
+          <Card src={Image3} msg="We're here for you 24/7" />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center p-6">
           <h1 className="text-2xl font-semibold md:mt-8 md:text-3xl ">
             Our most popular routes
           </h1>
-          <p className="font-thin md:text-xl md:mt-5">
+          <p className="font-thin text-center md:text-xl md:mt-5">
             Visit our most popular route by booking your ticket online with{" "}
-            <span>supratours</span>.
+            <span className="md:text-xl font-serif bold text-red-300 ">
+              Supr@tours
+            </span>
           </p>
         </div>
       </section>
-      <section className="h-screen bg-slate-100">
-        <div className="flex md:flex-row md:w-full md:justify-around md:items-center ">
+      <section className="md:h-screen p-6 bg-slate-100">
+        <div className="w-full flex flex-col items-center space-y-8 md:h-screen md:space-y-0 md:flex-row md:w-full md:justify-around md:items-center ">
           <MuiCard
             src={Mar}
             city="Marrakech"
