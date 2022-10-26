@@ -83,7 +83,7 @@ nav {
     color: var(--responsiveTextColor);
     transition: 1s;
     transform: translateY(-100vh);
-    z-index: 3;
+    z-index: 100;
   }
 
   header .responsive_nav {
