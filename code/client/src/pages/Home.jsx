@@ -3,16 +3,17 @@ import NavBar from "../components/navBar/NavBar";
 import SearchBox from "../components/Search/SearchBox";
 import Background from "../components/video/Background";
 import DatePicker from "../components/datePicker/DatePicker";
-import Card from "../components/cards/Card";
 import "../styles/Home.css";
-import Traveler from "../assets/svg/traveler.svg";
-import Support from "../assets/svg/support.svg";
-import Map from "../assets/svg/map.svg";
+import Card2 from "../components/cards/Card2"
+import Image1 from "../assets/svg/image1.svg";
+import Image2 from "../assets/svg/image2.svg";
+import Image3 from "../assets/svg/image3.svg";
+
 const Home = () => {
   return (
     <>
       <Background />
-      <div className="section1">
+      <section className="section1">
         <div className="main">
           <NavBar />
           <h1 className="absolute lg:top-60 top-52 text-center  lg:text-center text-white lg:text-3xl">
@@ -55,23 +56,23 @@ const Home = () => {
             </div>
           </form>
         </div>
-      </div>
-      <div className="flex lg:flex-col lg:items-center section2 h-screen bg-white">
+      </section>
+      <section className="flex lg:space-y-8 lg:flex-col lg:items-center section2 h-screen bg-white">
         <div className="divide-y-4 text-3xl font-bold text-center pt-5">
-          <h1 className="">Get your ticket <span className="text-red-400">fast</span> and <span className="text-red-400">anywhere</span>.</h1>
+          <h1 className="">
+            Get your ticket <span className="text-red-400">fast</span> and{" "}
+            <span className="text-red-400">anywhere</span>.
+          </h1>
         </div>
         <hr class="my-8 w-1/2 justify-center h-px bg-gray-300 border-0 dark:bg-gray-700"></hr>
-        <div className="flex flex-col">
-          <img className="w-2/12" src={Traveler} alt="" />
-          <span className="text-xl font-bold font-serif text-black">Book your bus ticket easily</span>
-          {/* <p>Supr@Tours allow you to search and book your bus ticket easily from your home.</p> */}
+        <p className="text-center text-xl font-medium ">You can search all of Morocco's destinations with Supr@Tours <br /> thanks to its more than 100 trips, <br /> so you'll never get lost.</p>
+        <div className="flex w-11/12 lg:flex-row lg:justify-center lg:space-x-6">
+          <Card2 src={Image1} msg="Book your bus ticket easily" />
+          <Card2 src={Image2} msg="Find your next destination" />
+          <Card2 src={Image3} msg="We're here for you 24/7" />
         </div>
-        {/* <div className="space-y-6 w-full my-5 flex flex-col items-center lg:flex lg:flex-row lg:w-full lg:justify-center lg:space-x-8 lg:items-center lg:pt-5">
-          <Card src={Traveler} />
-          <Card src={Support} />
-          <Card src={Map} />
-        </div> */}
-      </div>
+        {/* <p>Supr@Tours allow you to search and book your bus ticket easily from your home.</p> */}
+      </section>
     </>
   );
 };
