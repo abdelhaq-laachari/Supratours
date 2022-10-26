@@ -4,10 +4,14 @@ import SearchBox from "../components/Search/SearchBox";
 import Background from "../components/video/Background";
 import DatePicker from "../components/datePicker/DatePicker";
 import "../styles/Home.css";
-import Card2 from "../components/cards/Card2"
+import Card2 from "../components/cards/Card2";
 import Image1 from "../assets/svg/image1.svg";
 import Image2 from "../assets/svg/image2.svg";
 import Image3 from "../assets/svg/image3.svg";
+import MuiCard from "../components/cards/MuiCard";
+import Mar from "../assets/img/mar.jpg"
+import Casa from "../assets/img/casa.jpg"
+import Rabat from "../assets/img/rab2.jpg"
 
 const Home = () => {
   return (
@@ -57,21 +61,34 @@ const Home = () => {
           </form>
         </div>
       </section>
-      <section className="flex lg:space-y-8 lg:flex-col lg:items-center section2 h-screen bg-white">
-        <div className="divide-y-4 text-3xl font-bold text-center pt-5">
+      <section className="flex lg:space-y-8 lg:flex-col lg:pt-7 lg:items-center h-screen bg-gray-50">
+        <div className="divide-y-4 text-3xl text-black font-bold text-center pt-5">
           <h1 className="">
             Get your ticket <span className="text-red-400">fast</span> and{" "}
             <span className="text-red-400">anywhere</span>.
           </h1>
         </div>
         <hr class="my-8 w-1/2 justify-center h-px bg-gray-300 border-0 dark:bg-gray-700"></hr>
-        <p className="text-center text-xl font-medium ">You can search all of Morocco's destinations with Supr@Tours <br /> thanks to its more than 100 trips, <br /> so you'll never get lost.</p>
+        <p className="text-center text-xl font-medium ">
+          You can search all of Morocco's destinations with Supr@Tours <br />{" "}
+          thanks to its more than 100 trips, <br /> so you'll never get lost.
+        </p>
         <div className="flex w-11/12 lg:flex-row lg:justify-center lg:space-x-6">
           <Card2 src={Image1} msg="Book your bus ticket easily" />
           <Card2 src={Image2} msg="Find your next destination" />
           <Card2 src={Image3} msg="We're here for you 24/7" />
         </div>
-        {/* <p>Supr@Tours allow you to search and book your bus ticket easily from your home.</p> */}
+        <div>
+          <h1>Our most popular routes</h1>
+          <p>Explore </p>
+        </div>
+      </section>
+      <section className="h-screen bg-slate-100">
+        <div className="flex lg:flex-row lg:w-full lg:justify-around lg:items-center ">
+          <MuiCard src={Mar} />
+          <MuiCard src={Casa} />
+          <MuiCard src={Rabat} />
+        </div>
       </section>
     </>
   );
