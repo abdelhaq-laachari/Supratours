@@ -1,8 +1,9 @@
 import React from "react";
-import { FaInstagram } from "react-icons/fa";
+import { BsMedium } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
+import { FaGithubAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const footer = () => {
   return (
@@ -14,38 +15,47 @@ const footer = () => {
               Supr@<span className="text-blue-600">Tours</span>
             </p>
             <div className="flex gap-6 pb-5">
-              <FaTwitter className="text-2xl cursor-pointer hover:text-blue-600" />
-              <FaInstagram className="text-2xl cursor-pointer hover:text-fuchsia-500" />
-              <FaLinkedin className="text-2xl cursor-pointer hover:text-sky-600" />
-              <FaYoutube className="text-2xl cursor-pointer hover:text-red-600" />
+              <a
+                href="https://twitter.com/_Godfather_y"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <FaTwitter className="text-2xl cursor-pointer hover:text-blue-600" />
+              </a>
+              <a
+                href="https://medium.com/@abdelhaqlaachari"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <BsMedium className="text-2xl cursor-pointer  hover:text-lime-500 " />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/abdelhaq-laachari"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaLinkedin className="text-2xl cursor-pointer hover:text-sky-600" />
+              </a>
+              <a
+                href="https://github.com/abdelhaq-laachari"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <FaGithubAlt className="text-2xl cursor-pointer hover:text-red-600" />
+              </a>
             </div>
           </ul>
         </div>
         <div className="p-5">
           <ul>
-            <p className="text-gray-800 font-bold text-2xl pb-4">Product</p>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-              Ticket
-            </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-              Futures & Options
-            </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-              Mutual Funds
-            </li>
-            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-              Fixed deposits
-            </li>
-          </ul>
-        </div>
-        <div className="p-5">
-          <ul>
-            <p className="text-gray-800 font-bold text-2xl pb-4">Get to know us</p>
+            <p className="text-gray-800 font-bold text-2xl pb-4">
+              Get to know us
+            </p>
             <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
               About us
             </li>
             <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
-              Pricing
+              What our customers think
             </li>
             <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
               Press & Media
@@ -54,7 +64,9 @@ const footer = () => {
         </div>
         <div className="p-5">
           <ul>
-            <p className="text-gray-800 font-bold text-2xl pb-4">We’re here for you</p>
+            <p className="text-gray-800 font-bold text-2xl pb-4">
+              We’re here for you
+            </p>
             <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
               Contact us
             </li>
@@ -63,10 +75,21 @@ const footer = () => {
             </li>
           </ul>
         </div>
+        <div className="p-5">
+          <ul>
+            <p className="text-gray-800 font-bold text-2xl pb-4">Legal</p>
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+              Privacy policy
+            </li>
+            <li className="text-gray-500 text-md pb-2 font-semibold hover:text-blue-600 cursor-pointer">
+              Terms and conditions
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="flex flex-col justify-center items-center text-center  p-5 bg-gray-50">
         <h1 className=" text-gray-800 font-semibold">
-          © 2021-2022 All rights reserved | Build with ❤ by{" "}
+          © 2022 All rights reserved | Build with ❤ by{" "}
           <span className="hover:text-blue-600 font-semibold cursor-pointer">
             Godfather{" "}
           </span>
