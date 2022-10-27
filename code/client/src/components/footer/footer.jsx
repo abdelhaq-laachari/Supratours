@@ -3,7 +3,7 @@ import { BsMedium } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithubAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const footer = () => {
   return (
