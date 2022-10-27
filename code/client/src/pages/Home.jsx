@@ -12,6 +12,7 @@ import MuiCard from "../components/cards/MuiCard";
 import Mar from "../assets/img/mar.jpg";
 import Casa from "../assets/img/casa.jpg";
 import Rabat from "../assets/img/rab2.jpg";
+import Footer from "../components/footer/footer"
 
 const Home = () => {
   return (
@@ -90,7 +91,7 @@ const Home = () => {
           </p>
         </div>
       </section>
-      <section className="md:h-screen p-6 bg-slate-100">
+      <section className="md:h-screen px-6 bg-slate-100">
         <div className="w-full flex flex-col items-center space-y-8 md:h-screen md:space-y-0 md:flex-row md:w-full md:justify-around md:items-center ">
           <MuiCard
             src={Mar}
@@ -108,6 +109,9 @@ const Home = () => {
             about="Casablanca is a port city and commercial hub in western Morocco, fronting the Atlantic Ocean. The city's French colonial legacy is seen in its downtown Mauresque architecture, a blend of Moorish style and European art deco"
           />
         </div>
+      </section>
+      <section>
+        <Footer/>
       </section>
     </>
   );
