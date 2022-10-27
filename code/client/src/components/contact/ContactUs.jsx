@@ -3,7 +3,7 @@ import React from "react";
 const ContactUs = () => {
   return (
     <>
-      <section class="relative w-full  overflow-hidden bg-gray-50 py-20 lg:py-[120px]">
+      <section class="relative w-full  overflow-hidden bg-gray-50 py-20 lg:py-[80px]">
         <div class="container w-11/12 mx-auto">
           <div class="-mx-4 flex flex-wrap lg:justify-between">
             <div class="w-full px-4 lg:w-1/2 xl:w-6/12">

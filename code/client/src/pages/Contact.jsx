@@ -5,7 +5,7 @@ import Navbar from "../components/navBar/NavBar";
 const Contact = () => {
   return (
     <>
-      <div className="bg-gray-400">
+      <div className="bg-slate-400">
         <Navbar/>
         <ContactUs />
       </div>

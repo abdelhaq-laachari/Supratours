@@ -2,7 +2,7 @@ import "../styles/Error.css";
 import { Link } from "react-router-dom";
 import Home from "./Home";
 import Lottie from "lottie-react";
-import ErrorGif from '../assets/404GIF/404.json';
+import ErrorGif from '../assets/animated/404.json';
 import Button from "../components/buttons/Button";
 
 function Error() {

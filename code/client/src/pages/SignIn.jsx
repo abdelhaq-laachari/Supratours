@@ -1,11 +1,22 @@
 import React from "react";
-import SignUp from '../pages/SignUp'
+import SignInGif from "../assets/animated/signIn.json";
+import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
-
+import SignUp from "../pages/SignUp";
+import Home from "./Home";
 
 const SignIn = () => {
   return (
-    <>
+    <div className="flex flex-col h-screen justify-around items-center bg-slate-800 md:flex-row ">
+      <div className=" bg-transparent md:w-1/3 w-screen ">
+        <div className="md:flex hidden">
+          <Lottie
+            isClickToPauseDisabled={true}
+            animationData={SignInGif}
+            width={400}
+          />
+        </div>
+      </div>
       <section className=" dark:bg-gray-900 md:w-1/3 w-full">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
           <div className="w-full flex flex-col justify-center bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -61,12 +72,17 @@ const SignIn = () => {
                     </span>
                   </Link>
                 </p>
+                <Link to="/" element={<Home/> }>
+                  <span className="font-medium text-center text-primary-600  hover:underline dark:text-primary-500">
+                    Go Home
+                  </span>
+                </Link>
               </form>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
