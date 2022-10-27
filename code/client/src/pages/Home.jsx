@@ -69,7 +69,7 @@ const Home = () => {
             <span className="text-red-400">anywhere</span>.
           </h1>
         </div>
-        <hr class="my-8 w-1/2 justify-center h-px bg-gray-300 border-0 dark:bg-gray-700"></hr>
+        <hr className="my-8 w-1/2 justify-center h-px bg-gray-300 border-0 dark:bg-gray-700"></hr>
         <p className="text-center text-base md:text-xl font-medium ">
           You can search all of Morocco's destinations with Supr@Tours <br />
           thanks to its more than 100 trips, <br /> so you'll never get lost.

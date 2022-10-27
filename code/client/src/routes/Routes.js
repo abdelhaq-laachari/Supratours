@@ -5,6 +5,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import App from "../App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ContactUs from "../components/contact/ContactUs";
 
 const routes = () => {
   return (
@@ -13,6 +14,7 @@ const routes = () => {
         <Route path="/" element={<App />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/About" element={<About />} />
+        <Route path="/Contact" element={<ContactUs />} />
         <Route path="/Error" element={<Error />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
