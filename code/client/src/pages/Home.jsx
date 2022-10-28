@@ -55,7 +55,7 @@ const Home = () => {
               <div className="w-full md:w-1/4 px-2 mb-6 md:mb-0">
                 <DatePicker />
               </div>
-              <button className="bg-red-400 hover:bg-red-500 text-white w-full md:max-w-max font-bold py-2 px-4 rounded-full">
+              <button className="bg-red-400 hover:bg-red-500 text-white w-full font-bold py-2 px-4 rounded-full md:max-w-max">
                 Find Ticket
               </button>
             </div>
