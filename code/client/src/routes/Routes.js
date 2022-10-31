@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp";
 import App from "../App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "../pages/Contact";
+import Services from "../pages/Services";
 
 const routes = () => {
   return (
@@ -13,6 +14,7 @@ const routes = () => {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/Services" element={<Services />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Error" element={<Error />} />

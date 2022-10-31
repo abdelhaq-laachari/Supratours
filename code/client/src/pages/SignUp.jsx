@@ -92,7 +92,6 @@ const SignUp = () => {
       </section>
       <div className="w-1/3 md:flex hidden">
         <Lottie
-          isClickToPauseDisabled={true}
           animationData={User}
           width={400}
         />
