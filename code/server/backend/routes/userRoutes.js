@@ -15,7 +15,7 @@ const { route } = require("./postRoutes");
 
 router.route("/register").post(registerUser); // <--- Create a route for the registerUser function
 router.route("/login").post(loginUser); // <--- Create a route for the loginUser function
-router.route("/me").get(protect, getMe); // <--- Create a route for the getMe function
+router.route("/me").get( getMe); // <--- Create a route for the getMe function
 router.route("/logout").post(logoutUser); // <--- Create a route for the logoutUser function
 router.route("/searchTrip").post(protect, searchTrip); // <--- Create a route for the search trip function
 router.route("/booking/:idUser/:idTrip").post(protect,bookingTrip) // <--- Create a route for the booking trip function

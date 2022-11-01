@@ -1,14 +1,9 @@
 import React from "react";
 import AsyncSelect from "react-select/async";
+const { cities } = require("list-of-moroccan-cities"); // Import cities from list-of-moroccan-cities package
 
 const SearchBox = () => {
-  const { cities } = require("morocco-cities"); // Import cities from morocco-cities package
-  console.log(cities)
-  const newCities = JSON.parse(JSON.stringify(cities)); // Convert cities to JSON format to be able to use it in the component
-  // Create a new array of objects with the name and value of each city
-  const city = newCities.map(function (item) {
-    return { name: item.name, label: item.name };
-  });
+  
   // handleInputChange function to get the value of the input
   const handleChange = (selectedOption) => {
     console.log("handleChange", selectedOption);
@@ -16,7 +11,7 @@ const SearchBox = () => {
   // LoadOptions function to get the value of the input and filter the cities 
   const loadCities = (searchValue, callback) => {
     setTimeout(() => {
-      const filteredCities = city.filter((item) =>
+      const filteredCities = cities.filter((item) =>
         item.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
       );
       console.log("loadCities", searchValue, filteredCities);
@@ -28,7 +23,7 @@ const SearchBox = () => {
     <div>
       <AsyncSelect
         loadOptions={loadCities}
-        defaultOptions={city}
+        defaultOptions={cities}
         isClearable
         onChange={handleChange}
       />

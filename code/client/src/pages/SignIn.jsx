@@ -4,23 +4,11 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import Home from "./Home";
+import axios from "axios";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handelEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handelPassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const authFunction = (e) => {
-    e.preventDefault();
-    console.log({ email, password });
-  };
 
   return (
     <div className="flex flex-col h-screen justify-around items-center bg-slate-800 md:flex-row ">
@@ -36,7 +24,7 @@ const SignIn = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-4" onSubmit={authFunction}>
+              <form className="space-y-4 md:space-y-4">
                 <div>
                   <label
                     htmlFor="email"
@@ -52,7 +40,6 @@ const SignIn = () => {
                     placeholder="name@company.com"
                     required=""
                     value={email}
-                    onChange={handelEmail}
                   />
                 </div>
                 <div>
@@ -70,7 +57,6 @@ const SignIn = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                     value={password}
-                    onChange={handelPassword}
                   />
                 </div>
                 <button
