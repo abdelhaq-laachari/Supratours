@@ -1,18 +1,18 @@
 import React from "react";
-import NavBar from "../components/navBar/NavBar";
+import NavBar from "../components/NavBar/NavBar";
 import SearchBox from "../components/Search/SearchBox";
-import Background from "../components/video/Background";
-import DatePicker from "../components/datePicker/DatePicker";
+import Background from "../components/Video/Background";
+import DatePicker from "../components/Date Picker/DatePicker";
 import "../styles/Home.css";
-import Card from "../components/cards/Card";
+import Card from "../components/Cards/Card";
 import Image1 from "../assets/svg/image1.svg";
 import Image2 from "../assets/svg/image2.svg";
 import Image3 from "../assets/svg/image3.svg";
-import MuiCard from "../components/cards/MuiCard";
+import MuiCard from "../components/Cards/MuiCard";
 import Mar from "../assets/img/mar.jpg";
 import Casa from "../assets/img/casa.jpg";
 import Rabat from "../assets/img/rab2.jpg";
-import Footer from "../components/footer/footer"
+import Footer from "../components/Footer/Footer"
 
 const Home = () => {
   return (

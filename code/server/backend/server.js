@@ -4,7 +4,7 @@ const colors = require("colors"); // import colors
 const { errorHandler } = require("./middleware/errorMiddleware"); // custom error handler
 const port = process.env.PORT || 6000; // set our port
 const app = express();
-const cors = require("cors");
+const cors = require("cors"); 
 const connectDB = require("./config/db"); // import db connection
 
 connectDB(); // connect to db

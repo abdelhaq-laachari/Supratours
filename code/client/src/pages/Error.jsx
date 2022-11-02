@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Home from "./Home";
 import Lottie from "lottie-react";
 import ErrorGif from '../assets/animated/404.json';
-import Button from "../components/buttons/Button";
+import Button from "../components/Buttons/Button";
 
 function Error() {
 

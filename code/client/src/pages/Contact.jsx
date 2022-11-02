@@ -1,6 +1,6 @@
 import React from "react";
-import ContactUs from "../components/contact/ContactUs";
-import Navbar from "../components/navBar/NavBar";
+import ContactUs from "../components/Contact/ContactUs";
+import Navbar from "../components/NavBar/NavBar";
 
 const Contact = () => {
   return (

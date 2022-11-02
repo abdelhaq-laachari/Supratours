@@ -1,55 +1,36 @@
-import React from "react";
-import SignIn from "./SignIn";
-import { Link } from "react-router-dom";
-import Home from "./Home";
-import User from "../assets/animated/user.json";
+import { useState, useEffect } from "react";
+import SignInGif from "../assets/animated/signIn.json";
 import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
+// import SignUp from "../../pages/SignUp";
+import SignUp from "../pages/SignUp";
+import Home from "./Home";
 
-const SignUp = () => {
+const Sign = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  const onChange = (e) =>{}
+
   return (
-    <div className="flex md:items-center h-screen w-screen justify-around bg-slate-800">
+    <div className="flex flex-col h-screen justify-around items-center bg-slate-800 md:flex-row ">
+      <div className=" bg-transparent md:w-1/3 w-screen ">
+        <div className="md:flex hidden">
+          <Lottie animationData={SignInGif} width={400} />
+        </div>
+      </div>
       <section className=" dark:bg-gray-900 md:w-1/3 w-full">
-        <div className="flex flex-col justify-center items-center px-6 py-8 mx-auto h-screen lg:py-0">
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
+          <div className="w-full flex flex-col justify-center bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Create your account
+                Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-2" action="#">
-                <div className="flex space-x-4">
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      First name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Alex"
-                      required=""
-                    />
-                  </div>
-                  <div>
-                  <label
-                    htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Parker"
-                    required=""
-                  />
-                </div>
-                </div>
+              <form className="space-y-4 md:space-y-4">
                 <div>
                   <label
                     htmlFor="email"
@@ -64,6 +45,8 @@ const SignUp = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     required=""
+                    value={email}
+                    onChange={onChange}
                   />
                 </div>
                 <div>
@@ -80,20 +63,21 @@ const SignUp = () => {
                     placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
+                    value={password}
+                    onChange={onChange}
                   />
                 </div>
-                <div className="flex items-center justify-between"></div>
                 <button
                   type="submit"
                   className="w-full text-white border bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
-                  Sign up
+                  Sign in
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  You already have an account?{" "}
-                  <Link to="/signIn" element={<SignIn />}>
+                  Don’t have an account yet?{" "}
+                  <Link to="/signUp" element={<SignUp />}>
                     <span className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                      Sign in
+                      Sign up
                     </span>
                   </Link>
                 </p>
@@ -107,11 +91,8 @@ const SignUp = () => {
           </div>
         </div>
       </section>
-      <div className="w-1/3 md:flex hidden">
-        <Lottie animationData={User} width={400} />
-      </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Sign;
