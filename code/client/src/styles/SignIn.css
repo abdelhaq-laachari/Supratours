@@ -1,0 +1,10 @@
+.section {
+  background: linear-gradient(
+      to top,
+      rgb(0, 0, 0, 0.5) 50%,
+      rgb(0, 0, 0, 0.5) 50%
+    ),
+    url(../assets/img/d4.jpg);
+  background-position: center;
+  background-size: cover;
+}

@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import Home from "./Home";
+import '../styles/SignIn.css'
 
 const Sign = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ const Sign = () => {
   const onChange = (e) =>{}
 
   return (
-    <div className="flex flex-col h-screen justify-around items-center bg-slate-800 md:flex-row ">
+    <div className="section flex flex-col h-screen justify-around items-center bg-slate-800 md:flex-row ">
       <div className=" bg-transparent md:w-1/3 w-screen ">
         <div className="md:flex hidden">
           <Lottie animationData={SignInGif} width={400} />
