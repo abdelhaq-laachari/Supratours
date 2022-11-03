@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import Home from "./Home";
-import '../styles/SignIn.css'
+import "../styles/SignIn.css";
 
 const Sign = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +14,16 @@ const Sign = () => {
 
   const { email, password } = formData;
 
-  const onChange = (e) =>{}
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const loginFunction = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="section flex flex-col h-screen justify-around items-center bg-slate-800 md:flex-row ">
@@ -30,7 +39,8 @@ const Sign = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-4">
+              <form className="space-y-4 md:space-y-4" onSubmit={loginFunction}>
+                {/* email */}
                 <div>
                   <label
                     htmlFor="email"
@@ -49,6 +59,7 @@ const Sign = () => {
                     onChange={onChange}
                   />
                 </div>
+                {/* password */}
                 <div>
                   <label
                     htmlFor="password"

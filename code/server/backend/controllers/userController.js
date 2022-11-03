@@ -200,7 +200,7 @@ const myBooking = asyncHandler(async (req, res) => {
     res.status(201).json(myBookings);
   } else {
     res.status(404);
-    throw new Error("You no booking yet");
+    throw new Error("You have no booking yet");
   }
 });
 
