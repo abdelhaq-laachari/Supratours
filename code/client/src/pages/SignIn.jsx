@@ -4,7 +4,6 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import Home from "./Home";
-// import axiosInstance from "../api/axios";
 import axios from "axios";
 import "../styles/SignIn.css";
 
