@@ -4,6 +4,8 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import Home from "./Home";
+// import axiosInstance from "../api/axios";
+import axios from "axios";
 import "../styles/SignIn.css";
 
 const Sign = () => {
@@ -21,8 +23,15 @@ const Sign = () => {
     }));
   };
 
-  const loginFunction = (e) => {
+  const loginFunction = async (e) => {
     e.preventDefault();
+    try {
+      await axios.post("user/login", formData).then((res) => {
+        console.log(res.data);
+      });
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
   };
 
   return (

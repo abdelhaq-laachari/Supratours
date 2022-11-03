@@ -56,7 +56,7 @@ const registerAdmin = asyncHandler(async (req, res) => {
 // @desc    Login admin
 // @route   POST /admin/login
 // @access  Public
-
+ 
 const loginAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
