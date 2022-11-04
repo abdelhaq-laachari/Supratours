@@ -6,6 +6,8 @@ import SignUp from "../pages/SignUp";
 import Home from "./Home";
 import axios from "axios";
 import "../styles/SignIn.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Sign = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +31,9 @@ const Sign = () => {
         console.log(res.data);
       });
     } catch (error) {
-      console.log(error.response.data.message);
+      // show toast image here
+      toast.error("Invalid Credentials");
+      
     }
   };
 

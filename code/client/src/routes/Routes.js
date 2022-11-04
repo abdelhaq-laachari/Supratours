@@ -7,22 +7,26 @@ import App from "../App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "../pages/Contact";
 import Services from "../pages/Services";
+import {ToastContainer} from 'react-toastify'
 
 const routes = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Services" element={<Services />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Error" element={<Error />} />
-        <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Services" element={<Services />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/Error" element={<Error />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+      <ToastContainer />
+    </>
   );
 };
 
