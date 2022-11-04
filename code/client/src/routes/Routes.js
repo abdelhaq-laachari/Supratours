@@ -7,7 +7,7 @@ import App from "../App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "../pages/Contact";
 import Services from "../pages/Services";
-import {ToastContainer} from 'react-toastify'
+import { ToastContainer } from "react-toastify";
 
 const routes = () => {
   return (
@@ -25,7 +25,7 @@ const routes = () => {
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={2000} />
     </>
   );
 };
