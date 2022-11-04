@@ -15,6 +15,7 @@ const Sign = () => {
     password: "",
   });
   const [formErrors, setFormErrors] = useState({});
+  const [user, setUser] = useState();
 
   const { email, password } = formData;
 
@@ -30,7 +31,10 @@ const Sign = () => {
     setFormErrors(validate(formData));
     try {
       await axios.post("user/login", formData).then((res) => {
-        console.log(res.data);
+        const userId = res.data.user._id;
+        const token = res.data.Token;
+        setUser(res.data.user);
+        localStorage.setItem("userId", userId);
       });
     } catch (error) {
       // show toast error message if password input not empty
@@ -40,6 +44,7 @@ const Sign = () => {
       }
     }
   };
+  // validate function for form errors
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
