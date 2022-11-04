@@ -34,7 +34,8 @@ const Sign = () => {
       });
     } catch (error) {
       // show toast error message if password input not empty
-      if (password !== "") {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+      if (password !== "" && email !== "" && regex.test(email)) {
         toast.error("Incorrect information, please try again");
       }
     }

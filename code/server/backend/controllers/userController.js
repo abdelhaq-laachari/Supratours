@@ -58,7 +58,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       firstName: user.firstName,
       email: user.email,
-      Token: generateToken(user._id), 
+      Token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -75,18 +75,18 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // check for user email
   const user = await User.findOne({ email });
-  const userPassword = await bcrypt.compare(password, user.password);
-
-  if (user && userPassword) {
-    res.status(201).json({
-      _id: user.id,
-      firstName: user.firstName,
-      email: user.email,
-      Token: generateToken(user._id),
-    });
+  if (user) {
+    // check for password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (isMatch) {
+      res.json(user);
+    } else {
+      res.status(401);
+      throw new Error("Invalid email or password");
+    }
   } else {
-    res.status(400);
-    throw new Error("Incorrect email or password");
+    res.status(401);
+    throw new Error("Invalid email or password");
   }
 });
 
@@ -125,7 +125,7 @@ const searchTrip = asyncHandler(async (req, res) => {
     endPoint:
       endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
-  }).populate("bus", "busName numberOfSeats"); 
+  }).populate("bus", "busName numberOfSeats");
 
   const numberOfSeats = trip[0].bus.numberOfSeats;
 
@@ -208,8 +208,8 @@ const myBooking = asyncHandler(async (req, res) => {
 // @route   DELETE /users/cancelTrip
 // @access  Private
 
-const cancelTrip = asyncHandler(async(req,res)=>{
-  const trip = await Booking.findById(req.params.tripId)
+const cancelTrip = asyncHandler(async (req, res) => {
+  const trip = await Booking.findById(req.params.tripId);
 
   if (!trip) {
     res.status(404);
@@ -217,7 +217,7 @@ const cancelTrip = asyncHandler(async(req,res)=>{
   }
   await trip.remove();
   res.status(200).json({ message: `Trip has been deleted` });
-})
+});
 
 // @desc    Generate token for user
 
