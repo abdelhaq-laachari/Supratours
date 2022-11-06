@@ -1,10 +1,4 @@
 {
-    "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": true,
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.settings.openDefaultSettings": false,
-    "workbench.colorCustomizations": {
-    
-    }
+    "workbench.colorTheme": "One Dark Pro Darker"
 }
