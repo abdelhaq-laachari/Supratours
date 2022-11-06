@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner/Spinner";
 import Home from "./Home";
 import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 import "../styles/SignUp.css";
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +25,26 @@ const SignUp = () => {
   const { firstName, lastName, email, password, address, city, age, phone } =
     formData;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    // check for error and show toast alert
+    if (isError) {
+      toast.error(message);
+    }
+    // if user logged in redirect him to home
+    if (isSuccess || user) {
+      navigate('/');
+    }
+    // we need to reset everything
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -28,7 +54,13 @@ const SignUp = () => {
 
   const authFunction = (e) => {
     e.preventDefault();
+    dispatch(register(formData))
   };
+
+  // check for loading
+  if(isLoading){
+    return <Spinner/>
+  }
 
   return (
     <>
