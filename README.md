@@ -14,6 +14,8 @@ Supr@Tours
 
 ## Conception
 
+### Class Diagram
+
 <h1 align="center">
  <img src="./conception/class-diagram/class-diagram.png" width="700"/>
 </h1>
