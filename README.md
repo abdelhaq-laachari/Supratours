@@ -1,8 +1,9 @@
 <h1 align="center">
 Supr@Tours 
 <br>
+<br>
 <a href="https://github.com/abdelhaq-laachari" target="_blank">
-<img src="https://source.unsplash.com/T5jzpRTVF1U" width="300"/>
+<img src="https://source.unsplash.com/T5jzpRTVF1U" width="600"/>
 </a>
 
 </h1>
