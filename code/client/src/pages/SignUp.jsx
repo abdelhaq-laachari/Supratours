@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import SignIn from "./SignIn";
 import "../styles/SignUp.css";
 
-
 const SignUp = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -35,11 +34,12 @@ const SignUp = () => {
   useEffect(() => {
     // check for error and show toast alert
     if (isError) {
-      toast.error(message);
+      toast.error("message");
     }
     // if user logged in redirect him to home
     if (isSuccess || user) {
-      navigate('/');
+      // navigate('/');
+      toast.success("register success");
     }
     // we need to reset everything
     dispatch(reset());
@@ -58,8 +58,8 @@ const SignUp = () => {
   };
 
   // check for loading
-  if(isLoading){
-    return <Spinner/>
+  if (isLoading) {
+    return <Spinner />;
   }
 
   return (
