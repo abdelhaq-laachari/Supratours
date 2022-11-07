@@ -14,4 +14,4 @@ Supr@Tours
 
 ## Conception
 
-<img src="./conception/class-diagram/class-diagram.jpg" width="600"/>
+<img src="./conception/class-diagram/class-diagram.png" width="600"/>
