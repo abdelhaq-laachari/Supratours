@@ -8,7 +8,9 @@ Supr@Tours
 
 </h1>
 
-<h4 align="center">A simple and easy to use web application for managing tours and bookings.</h4>
+## Description
+
+<h2 align="center">A simple and easy to use web application for managing tours and bookings.</h2>
 
 
 ## Available Scripts
