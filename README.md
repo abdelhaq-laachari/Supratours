@@ -1,5 +1,6 @@
 <h1 align="center">
-<a href="https://github.com/abdelhaq-laachari">
+Supr@Tours
+<a href="https://github.com/abdelhaq-laachari" target="_blank">
 <img src="https://source.unsplash.com/T5jzpRTVF1U" width="300"/>
 </a>
 
