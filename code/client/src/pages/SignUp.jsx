@@ -34,12 +34,12 @@ const SignUp = () => {
   useEffect(() => {
     // check for error and show toast alert
     if (isError) {
-      toast.error("message");
+      toast.error(message);
     }
     // if user logged in redirect him to home
-    if (isSuccess || user) {
-      // navigate('/');
-      toast.success("register success");
+    if (isSuccess ) {
+      navigate('/');
+      // toast.success("register success");
     }
     // we need to reset everything
     dispatch(reset());

@@ -25,6 +25,8 @@ export const register = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
+      // const test = thunkAPI.rejectWithValue(message)
+      // console.log(test)
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -40,24 +42,24 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.message = "";
     },
-    extraReducers: (builder) => {
-      builder
-        .addCase(register.pending, (state) => {
-          state.isLoading = true;
-        })
-        .addCase(register.fulfilled, (state, action) => {
-          state.isLoading = false;
-          state.isSuccess = true;
-          state.user = action.payload;
-        })
-        .addCase(register.rejected, (state, action) => {
-          state.isLoading = false;
-          state.isSuccess = false;
-          state.isError = true;
-          state.message = action.payload;
-          state.user = null;
-        });
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(register.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(register.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+      });
   },
 });
 
