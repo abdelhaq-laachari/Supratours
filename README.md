@@ -108,30 +108,14 @@ http://localhost:3000
 
 # Technologies
 
+- [React](https://reactjs.org/)
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
-- [Pug](https://pugjs.org/api/getting-started.html)
-- [Bootstrap](https://getbootstrap.com/)
-- [Font Awesome](https://fontawesome.com/)
-- [Passport.js](http://www.passportjs.org/)
-- [Passport-local](http://www.passportjs.org/packages/passport-local/)
-- [Passport-local-mongoose](https://www.npmjs.com/package/passport-local-mongoose)
-- [Express-session](https://www.npmjs.com/package/express-session)
-- [Connect-flash](https://www.npmjs.com/package/connect-flash)
-- [Morgan](https://www.npmjs.com/package/morgan)
 - [Dotenv](https://www.npmjs.com/package/dotenv)
 - [Nodemon](https://www.npmjs.com/package/nodemon)
-- [Multer](https://www.npmjs.com/package/multer)
-- [Sharp](https://www.npmjs.com/package/sharp)
-- [Mapbox-gl](https://www.npmjs.com/package/mapbox-gl)
-- [Mapbox-gl-geocoder](https://www.npmjs.com/package/mapbox-gl-geocoder)
-- [Mapbox-gl-directions](https://www.npmjs.com/package/mapbox-gl-directions)
-- [Stripe](https://www.npmjs.com/package/stripe)
-- [Mongoose-unique-validator](https://www.npmjs.com/package/mongoose-unique-validator)
-- [Mongoose-delete](https://www.npmjs.com/package/mongoose-delete)
-- [Mongoose-aggregate-paginate-v2](https://www.npmjs.com/package/mongoose-aggregate-paginate-v2)
+- [Tailwind CSS](https://tailwindcss.com/)
 
 # License
 
@@ -143,6 +127,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Abdelhaq Laachari linkedin](https://www.linkedin.com/in/abdelhaq-laachari/)
 - [Abdelhaq Laachari github](https://github.com/abdelhaq-laachari)
 
+# Note 
 
+This project use a package that i created for managing moroccan cities in a simple way, you can find it here [list-of-moroccan-cities](https://www.npmjs.com/package/list-of-moroccan-cities) or you can see the repository [here](https://github.com/abdelhaq-laachari/Moroccan-cities)
 
 
