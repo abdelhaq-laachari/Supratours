@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import SignInGif from "../assets/animated/signIn.json";
 import Lottie from "lottie-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignUp from "../pages/SignUp";
 import Home from "./Home";
-import axios from "axios";
 import "../styles/SignIn.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { logIn, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner/Spinner";
+// import "react-toastify/dist/ReactToastify.css";
 
 const Sign = () => {
   const [formData, setFormData] = useState({
@@ -15,9 +17,29 @@ const Sign = () => {
     password: "",
   });
   const [formErrors, setFormErrors] = useState({});
-  const [user, setUser] = useState();
 
   const { email, password } = formData;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    // check for error and show toast alert
+    if (isError) {
+      toast.error(message);
+    }
+    // if user logged in redirect him to home
+    if (isSuccess) {
+      navigate("/");
+      // toast.success("register success");
+    }
+    // we need to reset everything
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -29,21 +51,27 @@ const Sign = () => {
   const loginFunction = async (e) => {
     e.preventDefault();
     setFormErrors(validate(formData));
-    try {
-      await axios.post("user/login", formData).then((res) => {
-        const userId = res.data.user._id;
-        const token = res.data.Token;
-        setUser(res.data.user);
-        localStorage.setItem("userId", userId);
-      });
-    } catch (error) {
-      // show toast error message if password input not empty
-      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-      if (password !== "" && email !== "" && regex.test(email)) {
-        toast.error("Incorrect information, please try again");
-      }
-    }
+    dispatch(logIn(formData));
+    // try {
+    //   await axios.post("user/login", formData).then((res) => {
+    //     const userId = res.data.user._id;
+    //     const token = res.data.Token;
+    //     setUser(res.data.user);
+    //     localStorage.setItem("userId", userId);
+    //   });
+    // } catch (error) {
+    //   // show toast error message if password input not empty
+    //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    //   if (password !== "" && email !== "" && regex.test(email)) {
+    //     toast.error("Incorrect information, please try again");
+    //   }
+    // }
   };
+
+  // check for loading
+  if (isLoading) {
+    return <Spinner />;
+  }
   // validate function for form errors
   const validate = (values) => {
     const errors = {};
