@@ -10,7 +10,6 @@ const SearchBox = () => {
   // handleInputChange function to get the value of the input
   const handleChange = (selectedOption) => {
     console.log("handleChange", selectedOption.name);
-    setName(selectedOption.name)
   };
   // LoadOptions function to get the value of the input and filter the cities 
   const loadCities = (searchValue, callback) => {
@@ -30,7 +29,6 @@ const SearchBox = () => {
         defaultOptions={cities}
         isClearable
         onChange={handleChange}
-        // value={name}
       />
     </div>
   );
