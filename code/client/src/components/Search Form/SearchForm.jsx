@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
-import AsyncSelect from "react-select/async";
-import DatePicker from '../Date Picker/DatePicker'
+// import AsyncSelect from "react-select/async";
+import DatePicker from "../Date Picker/DatePicker";
+import Select from "react-select";
 
 // Import cities from list-of-moroccan-cities package
 const { cities } = require("list-of-moroccan-cities");
 
-
 const SearchForm = () => {
+    const [from, setFrom] = useState()
+    const [to, setTo] = useState()
+    
+
+    console.log("from: " + from + " to: " + to)
+
   // handleInputChange function to get the value of the input
-  const handleChange = (selectedOption) => {
-    console.log("handleChange", selectedOption.name);
+  const handleChange1 = (selectedOption) => {
+    setFrom(selectedOption.name)
+  };
+  const handleChange2 = (selectedOption) => {
+    setTo(selectedOption.name)
   };
 
-  // LoadOptions function to get the value of the input and filter the cities
-  const loadCities = (searchValue, callback) => {
-    setTimeout(() => {
-      const filteredCities = cities.filter((item) =>
-        item.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
-      );
-      console.log("loadCities", searchValue, filteredCities);
-      callback(filteredCities);
-    }, 200);
-  };
   return (
     <>
       <form className="absolute md:top-2/4 top-1/3 flex justify-center bg-white p-3 items-center w-10/12 rounded-md shadow-lg ">
@@ -34,12 +33,11 @@ const SearchForm = () => {
               From
             </label>
             <div>
-              <AsyncSelect
-                loadOptions={loadCities}
-                defaultOptions={cities}
+              <Select
                 isClearable
                 getOptionValue={(cities) => cities.name}
-                onChange={handleChange}
+                options={cities}
+                onChange={handleChange1}
               />
             </div>
           </div>
@@ -51,12 +49,11 @@ const SearchForm = () => {
               To
             </label>
             <div>
-              <AsyncSelect
-                loadOptions={loadCities}
-                defaultOptions={cities}
+              <Select
                 isClearable
                 getOptionValue={(cities) => cities.name}
-                onChange={handleChange}
+                options={cities}
+                onChange={handleChange2}
               />
             </div>
           </div>
