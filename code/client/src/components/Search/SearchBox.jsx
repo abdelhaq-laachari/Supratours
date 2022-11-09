@@ -1,16 +1,16 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AsyncSelect from "react-select/async";
 const { cities } = require("list-of-moroccan-cities"); // Import cities from list-of-moroccan-cities package
 
-const SearchBox = () => {
-
-  const [name, setName] = useState('')
-  console.log(name)
+const SearchBox = ({setValues,values,index}) => {
   
   // handleInputChange function to get the value of the input
   const handleChange = (selectedOption) => {
     console.log("handleChange", selectedOption.name);
+    index ? values[1] =selectedOption.name : values[0] = selectedOption.name
+    setValues(values => [...values,selectedOption.name])
   };
+  
   // LoadOptions function to get the value of the input and filter the cities 
   const loadCities = (searchValue, callback) => {
     setTimeout(() => {
@@ -27,7 +27,8 @@ const SearchBox = () => {
       <AsyncSelect
         loadOptions={loadCities}
         defaultOptions={cities}
-        isClearable
+        // isClearable
+        getOptionValue={(cities) => cities.name}
         onChange={handleChange}
       />
     </div>

@@ -1,8 +1,6 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar";
-import SearchBox from "../components/Search/SearchBox";
 import Background from "../components/Video/Background";
-import DatePicker from "../components/Date Picker/DatePicker";
 import "../styles/Home.css";
 import Card from "../components/Cards/Card";
 import Image1 from "../assets/svg/image1.svg";
@@ -12,7 +10,8 @@ import MuiCard from "../components/Cards/MuiCard";
 import Mar from "../assets/img/mar.jpg";
 import Casa from "../assets/img/casa.jpg";
 import Rabat from "../assets/img/rab2.jpg";
-import Footer from "../components/Footer/Footer"
+import Footer from "../components/Footer/Footer";
+import SearchForm from "../components/Search Form/SearchForm";
 
 const Home = () => {
   return (
@@ -32,34 +31,7 @@ const Home = () => {
             </span>
             .
           </h1>
-          <form className="absolute md:top-2/4 top-1/3 flex justify-center bg-white p-3 items-center w-10/12 rounded-md shadow-lg ">
-            <div className="flex md:w-full items-center flex-wrap mx-3 p-2 justify-center">
-              <div className="w-full z-20 md:w-1/4 px-3 mb-6 md:mb-0">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-city"
-                >
-                  From
-                </label>
-                <SearchBox />
-              </div>
-              <div className="w-full z-10 md:w-1/4 px-3 mb-6 md:mb-0">
-                <label
-                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="grid-city"
-                >
-                  From
-                </label>
-                <SearchBox />
-              </div>
-              <div className="w-full md:w-1/4 px-2 mb-6 md:mb-0">
-                <DatePicker />
-              </div>
-              <button className="bg-red-400 hover:bg-red-500 text-white w-full font-bold py-2 px-4 rounded-full md:max-w-max">
-                Find Ticket
-              </button>
-            </div>
-          </form>
+          <SearchForm/>
         </div>
       </section>
       <section className="flex flex-col bg-gray-50 items-center md:pt-7 md:space-y-8 md:h-screen ">
@@ -91,7 +63,7 @@ const Home = () => {
           </p>
         </div>
       </section>
-      <section className="md:h-screen px-6 bg-slate-100">
+      <section className="py-3 md:h-screen px-6 bg-slate-100">
         <div className="w-full flex flex-col items-center space-y-8 md:h-screen md:space-y-0 md:flex-row md:w-full md:justify-around md:items-center ">
           <MuiCard
             src={Mar}
@@ -100,18 +72,18 @@ const Home = () => {
           />
           <MuiCard
             src={Rabat}
-            city="Casablanca"
+            city="Rabat"
             about="Rabat, Morocco's capital, rests along the shores of the Bouregreg River and the Atlantic Ocean. It's known for landmarks that speak to its Islamic and French-colonial heritage, including the Kasbah of the Udayas"
           />
           <MuiCard
             src={Casa}
-            city="Rabat"
+            city="Casablanca"
             about="Casablanca is a port city and commercial hub in western Morocco, fronting the Atlantic Ocean. The city's French colonial legacy is seen in its downtown Mauresque architecture, a blend of Moorish style and European art deco"
           />
         </div>
       </section>
       <section>
-        <Footer/>
+        <Footer />
       </section>
     </>
   );
