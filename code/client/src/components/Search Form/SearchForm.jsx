@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import AsyncSelect from "react-select/async";
 import DatePicker from "../Date Picker/DatePicker";
 import Select from "react-select";
@@ -7,18 +7,18 @@ import Select from "react-select";
 const { cities } = require("list-of-moroccan-cities");
 
 const SearchForm = () => {
-    const [from, setFrom] = useState()
-    const [to, setTo] = useState()
-    
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
+  const [date, setDate] = useState();
 
-    console.log("from: " + from + " to: " + to)
+  console.log("from: " + from + " to: " + to + " and the date is: " + date);
 
   // handleInputChange function to get the value of the input
   const handleChange1 = (selectedOption) => {
-    setFrom(selectedOption.name)
+    if (selectedOption != null) setFrom(selectedOption.name);
   };
   const handleChange2 = (selectedOption) => {
-    setTo(selectedOption.name)
+    if (selectedOption != null) setTo(selectedOption.name);
   };
 
   return (
@@ -58,7 +58,7 @@ const SearchForm = () => {
             </div>
           </div>
           <div className="w-full md:w-1/4 px-2 mb-6 md:mb-0">
-            <DatePicker />
+            <DatePicker setDate={setDate} />
           </div>
           <button className="bg-red-400 hover:bg-red-500 text-white w-full font-bold py-2 px-4 rounded-full md:max-w-max">
             Find Ticket

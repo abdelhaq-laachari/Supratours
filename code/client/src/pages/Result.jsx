@@ -1,4 +1,5 @@
 import React from 'react'
+import BusCard from '../components/Bus Card/BusCard'
 import Navbar from '../components/NavBar/NavBar'
 
 const Result = () => {
@@ -8,7 +9,7 @@ const Result = () => {
       <Navbar/>
     </section>
     <section>
-      
+      <BusCard/>
     </section>
     </>
   )

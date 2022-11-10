@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import AsyncSelect from "react-select/async";
 const { cities } = require("list-of-moroccan-cities"); // Import cities from list-of-moroccan-cities package
 
@@ -7,7 +7,7 @@ const SearchBox = ({setValues,values,index}) => {
   // handleInputChange function to get the value of the input
   const handleChange = (selectedOption) => {
     console.log("handleChange", selectedOption.name);
-    index ? values[1] =selectedOption.name : values[0] = selectedOption.name
+    index ? values[1] =selectedOption.name : values[0] = selectedOption.name 
     setValues(values => [...values,selectedOption.name])
   };
   

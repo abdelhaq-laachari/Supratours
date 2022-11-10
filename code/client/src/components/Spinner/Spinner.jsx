@@ -1,8 +1,8 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import "./Spinner.css";
 // import ClipLoader from "react-spinners/ClipLoader";
-import ClockLoader from "react-spinners/ClockLoader";
-import RingLoader from "react-spinners/RingLoader";
+// import ClockLoader from "react-spinners/ClockLoader";
+// import RingLoader from "react-spinners/RingLoader";
 import FadeLoader from "react-spinners/FadeLoader";
 
 
