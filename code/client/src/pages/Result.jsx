@@ -8,7 +8,7 @@ const Result = () => {
     <section className='bg-red-400'>
       <Navbar/>
     </section>
-    <section>
+    <section className='flex justify-center w-full bg-slate-300'>
       <BusCard/>
     </section>
     </>
