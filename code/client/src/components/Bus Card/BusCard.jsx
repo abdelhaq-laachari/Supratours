@@ -54,8 +54,6 @@ const BusCard = () => {
           <div className="hidden md:flex w-40 md:justify-center md:items-center">
             <h1 className="text-3xl text-orange-400">80DH</h1>
           </div>
-          <div className="flex justify-end w-20"></div>
-          {/* <NewCard /> */}
         </div>
       </div>
       {/* <NewCard /> */}
