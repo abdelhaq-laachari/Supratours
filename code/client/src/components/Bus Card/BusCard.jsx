@@ -2,9 +2,9 @@ import React from "react";
 import Ctm from "../../assets/bus/ctm1.jpg";
 import { BiBus } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import NewCard from "./new";
-import { MdLuggage } from "react-icons/md";
-import { IoIosArrowDropdown } from "react-icons/io";
+// import NewCard from "./new";
+// import { MdLuggage } from "react-icons/md";
+// import { IoIosArrowDropdown } from "react-icons/io";
 
 const BusCard = () => {
   return (
@@ -30,13 +30,13 @@ const BusCard = () => {
                   Safi Station.
                 </span>
               </div>
-              <div className="flex w-20 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+              <div className="flex w-10 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
               <div className="flex items-center">
                 <time className="flex text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                   <AiOutlineClockCircle /> <span className="pl-2">6h</span>
                 </time>
               </div>
-              <div className="flex w-20 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+              <div className="flex w-10 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
               <div className="flex flex-col items-center justify-center">
                 <time className="text-center text-md md:text-lg font-semibold text-gray-900 dark:text-white">
                   13:15
@@ -45,11 +45,9 @@ const BusCard = () => {
                   Casablanca Station.
                 </span>
               </div>
+              <h1 className="md:hidden text-xl text-orange-400">80DH</h1>
             </div>
-            {/* <button className="bg-slate-300 p-1 rounded-t-md absolute bottom-0 right-0">
-              <IoIosArrowDropdown size={20} onClick={() => handleOpen(1)} />
-            </button> */}
-            <NewCard />
+            {/* <NewCard /> */}
           </div>
           <div className="hidden md:flex w-40 md:justify-center md:items-center">
             <h1 className="text-3xl text-orange-400">80DH</h1>

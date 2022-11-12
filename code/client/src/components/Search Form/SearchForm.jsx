@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 // import AsyncSelect from "react-select/async";
 import DatePicker from "../Date Picker/DatePicker";
 import Select from "react-select";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { searchTrip, reset } from "../../features/trips/tripSlice";
+import Spinner from "../Spinner/Spinner";
 
 // Import cities from list-of-moroccan-cities package
 const { cities } = require("list-of-moroccan-cities");
@@ -13,6 +18,27 @@ const SearchForm = () => {
 
   console.log("from: " + from + " to: " + to + " and the date is: " + date);
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.trip
+  );
+
+  useEffect(() => {
+    // check for error and show toast alert
+    if (isError) {
+      toast.error(message);
+    }
+    // if user logged in redirect him to home
+    if (isSuccess) {
+      // navigate("/");
+      toast.success("register success");
+    }
+    // we need to reset everything
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   // handleInputChange function to get the value of the input
   const handleChange1 = (selectedOption) => {
     if (selectedOption != null) setFrom(selectedOption.name);
@@ -21,9 +47,27 @@ const SearchForm = () => {
     if (selectedOption != null) setTo(selectedOption.name);
   };
 
+  const searchFunction = (e) => {
+    e.preventDefault();
+    const formData = {
+      startPoint: from,
+      endPoint: to,
+      startDate: date,
+    };
+    dispatch(searchTrip(formData));
+  };
+
+  // check for loading
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
-      <form className="absolute md:top-2/4 top-1/3 flex justify-center bg-white p-3 items-center w-10/12 rounded-md shadow-lg ">
+      <form
+        onSubmit={searchFunction}
+        className="absolute md:top-2/4 top-1/3 flex justify-center bg-white p-3 items-center w-10/12 rounded-md shadow-lg "
+      >
         <div className="flex md:w-full items-center flex-wrap mx-3 p-2 justify-center">
           <div className="w-full z-20 md:w-1/4 px-3 mb-6 md:mb-0">
             <label

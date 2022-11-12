@@ -67,10 +67,9 @@ const Sign = () => {
     //   }
     // }
   };
-
   // check for loading
-  if (isLoading) {
-    return <Spinner />;
+  if (isLoading && email && password) {
+    return <Spinner />;     
   }
   // validate function for form errors
   const validate = (values) => {

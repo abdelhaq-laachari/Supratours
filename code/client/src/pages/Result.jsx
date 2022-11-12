@@ -8,7 +8,9 @@ const Result = () => {
     <section className='bg-red-400'>
       <Navbar/>
     </section>
-    <section className='flex justify-center w-full bg-slate-300'>
+    <section className='flex flex-col items-center w-full bg-slate-300'>
+      <BusCard/>
+      <BusCard/>
       <BusCard/>
     </section>
     </>

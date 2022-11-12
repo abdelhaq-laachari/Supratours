@@ -129,11 +129,15 @@ const searchTrip = asyncHandler(async (req, res) => {
       endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
   }).populate("bus", "busName numberOfSeats");
-
-  const numberOfSeats = trip[0].bus.numberOfSeats;
-
-  if (trip && numberOfSeats > 0) {
-    res.status(201).json(trip);
+ 
+  if (trip.length > 0) {
+    const numberOfSeats = trip[0].bus.numberOfSeats;
+    if (numberOfSeats > 0) {
+      res.status(201).json(trip);
+    } else {
+      res.status(404);
+      throw new Error("There is no trip available");
+    }
   } else {
     res.status(404);
     throw new Error("There is no trip available");
