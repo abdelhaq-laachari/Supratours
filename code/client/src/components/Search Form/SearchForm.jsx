@@ -21,10 +21,10 @@ const SearchForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { trips, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.trip
   );
-
+    // console.log(trips)
   useEffect(() => {
     // check for error and show toast alert
     if (isError) {
@@ -32,12 +32,12 @@ const SearchForm = () => {
     }
     // if user logged in redirect him to home
     if (isSuccess) {
-      // navigate("/");
-      toast.success("register success");
+      navigate("/result");
+      // toast.success("register success");
     }
     // we need to reset everything
-    dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+    // dispatch(reset());
+  }, [trips, isError, isSuccess, message, navigate, dispatch]);
 
   // handleInputChange function to get the value of the input
   const handleChange1 = (selectedOption) => {

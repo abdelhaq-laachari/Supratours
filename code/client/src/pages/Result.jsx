@@ -10,8 +10,6 @@ const Result = () => {
     </section>
     <section className='flex flex-col items-center w-full bg-slate-300'>
       <BusCard/>
-      <BusCard/>
-      <BusCard/>
     </section>
     </>
   )

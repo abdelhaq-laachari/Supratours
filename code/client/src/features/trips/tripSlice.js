@@ -3,10 +3,10 @@ import tripService from "./tripService";
 
 // trip from localStorage
 
-const trips = JSON.parse(localStorage.getItem("trips"));
+// const trips = JSON.parse(localStorage.getItem("trips"));
 
 const initialState = {
-  trips: [],
+  trips: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -45,7 +45,7 @@ export const tripSlice = createSlice({
       .addCase(searchTrip.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.trips.push(action.payload);
+        state.trips = action.payload;
       })
       .addCase(searchTrip.rejected, (state, action) => {
         state.isLoading = false;
