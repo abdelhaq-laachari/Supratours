@@ -16,22 +16,17 @@ const SearchForm = () => {
   const [to, setTo] = useState();
   const [date, setDate] = useState();
 
-  // console.log("from: " + from + " to: " + to + " and the date is: " + date);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { trips, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.trip
   );
-  // console.log(trips)
+  
   useEffect(() => {
-    // check for error and show toast alert
     if (isError) {
       toast.error(message);
     }
-    // we need to reset everything
-    dispatch(reset());
   }, [trips, isError, isSuccess, message, navigate, dispatch]);
 
   // handleInputChange function to get the value of the input
