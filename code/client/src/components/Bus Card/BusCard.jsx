@@ -5,20 +5,19 @@ import Ctm from "../../assets/bus/ctm1.jpg";
 import { BiBus } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import NewCard from "./new";
-import { searchTrip } from "../../features/trips/tripSlice";
+import { reset, searchTrip } from "../../features/trips/tripSlice";
 
 const BusCard = () => {
   const dispatch = useDispatch();
-  const { trips  } = useSelector((state) => state.trip);
+  const { trips, isSuccess } = useSelector((state) => state.trip);
   const formData = JSON.parse(localStorage.getItem("formData"));
-  useEffect(()=>{
-    console.log("render")
-    dispatch(searchTrip(formData))
-  },[])
+  useEffect(() => {
+    dispatch(searchTrip(formData));
+  }, []);
 
   return (
     <>
-      {trips.map((trip) => (
+      {trips?.map((trip) => (
         <div key={trip._id} className="flex w-3/4 justify-center p-3">
           <div className="flex flex-col md:flex-row md:w-max rounded-lg bg-white shadow-lg">
             <img

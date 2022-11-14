@@ -24,19 +24,14 @@ const SearchForm = () => {
   const { trips, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.trip
   );
-    // console.log(trips)
+  // console.log(trips)
   useEffect(() => {
     // check for error and show toast alert
     if (isError) {
       toast.error(message);
     }
-    // if user logged in redirect him to home
-    if (isSuccess) {
-      navigate("/result");
-      // toast.success("register success");
-    }
     // we need to reset everything
-    // dispatch(reset());
+    dispatch(reset());
   }, [trips, isError, isSuccess, message, navigate, dispatch]);
 
   // handleInputChange function to get the value of the input
@@ -55,6 +50,7 @@ const SearchForm = () => {
       startDate: date,
     };
     dispatch(searchTrip(formData));
+    navigate("/result");
   };
 
   // check for loading
