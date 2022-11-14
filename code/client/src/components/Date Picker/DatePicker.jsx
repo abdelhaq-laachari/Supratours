@@ -19,7 +19,7 @@ const DatePickers= ({ setDate }) => {
   }).format(date);
 
 useEffect(() =>{
-  setDate(newDate)
+  setDate(newDate.replaceAll("/","-"))
 },[newDate])
 
 

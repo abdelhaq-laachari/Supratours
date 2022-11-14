@@ -6,7 +6,7 @@ const Card = () => {
   return (
     <div className="flex items-end">
       <Collapsible trigger={<IoIosArrowDropdown size={20} />}>
-        <p className="flex justify-end items-end">
+        <div className="flex justify-end items-end">
           <div className="flex items-center space-x-4 my-3 justify-between">
             <div className="flex flex-col items-center justify-center">
               <time className="text-center text-md md:text-lg font-semibold text-gray-900 dark:text-white">
@@ -35,7 +35,7 @@ const Card = () => {
               </span>
             </div>
           </div>
-        </p>
+        </div>
       </Collapsible>
     </div>
   );

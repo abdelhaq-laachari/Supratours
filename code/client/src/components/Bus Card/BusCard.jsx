@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import Ctm from "../../assets/bus/ctm1.jpg";
 import { BiBus } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
-// import NewCard from "./new";
-// import { MdLuggage } from "react-icons/md";
-// import { IoIosArrowDropdown } from "react-icons/io";
+import NewCard from "./new";
+import { searchTrip } from "../../features/trips/tripSlice";
 
 const BusCard = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { trips  } = useSelector((state) => state.trip);
+  const formData = JSON.parse(localStorage.getItem("formData"));
+  useEffect(()=>{
+    console.log("render")
+    dispatch(searchTrip(formData))
+  },[])
 
-  const { trips } = useSelector((state) => state.trip);
-  console.log(trips);
   return (
     <>
       {trips.map((trip) => (
-        <div className="flex w-3/4 justify-center p-3">
+        <div key={trip._id} className="flex w-3/4 justify-center p-3">
           <div className="flex flex-col md:flex-row md:w-max rounded-lg bg-white shadow-lg">
             <img
               className="w-full h-52 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
@@ -38,7 +39,7 @@ const BusCard = () => {
                     {trip.startTime}
                   </time>
                   <span className="text-center mt-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  {trip.startPoint} Station.
+                    {trip.startPoint} Station.
                   </span>
                 </div>
                 <div className="flex w-10 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -50,15 +51,15 @@ const BusCard = () => {
                 <div className="flex w-10 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 <div className="flex flex-col items-center justify-center">
                   <time className="text-center text-md md:text-lg font-semibold text-gray-900 dark:text-white">
-                  {trip.endTime}
+                    {trip.endTime}
                   </time>
                   <span className="text-center mt-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                  {trip.endPoint} Station.
+                    {trip.endPoint} Station.
                   </span>
                 </div>
                 <h1 className="md:hidden text-xl text-orange-400">80DH</h1>
               </div>
-              {/* <NewCard /> */}
+              <NewCard />
             </div>
             <div className="hidden md:flex w-40 md:justify-center md:items-center">
               <h1 className="text-3xl text-orange-400">80DH</h1>

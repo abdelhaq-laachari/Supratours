@@ -16,7 +16,7 @@ const SearchForm = () => {
   const [to, setTo] = useState();
   const [date, setDate] = useState();
 
-  console.log("from: " + from + " to: " + to + " and the date is: " + date);
+  // console.log("from: " + from + " to: " + to + " and the date is: " + date);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
