@@ -4,6 +4,7 @@ import Error from "../pages/Error";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Result from "../pages/Result";
+import Booking from "../pages/Booking";
 import App from "../App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contact from "../pages/Contact";
@@ -25,6 +26,7 @@ const routes = () => {
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/Result" element={<Result/>} />
+          <Route path="/Booking" element={<Booking/>} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

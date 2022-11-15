@@ -15,7 +15,6 @@ const BusCard = () => {
   const formData = JSON.parse(localStorage.getItem("formData"));
   useEffect(() => {
     dispatch(searchTrip(formData));
-    // dispatch(reset())
   }, []);
   if (isSuccess) {
     dispatch(resetSuccess());
@@ -85,7 +84,7 @@ const BusCard = () => {
                   storeId(trip._id);
                 }}
               >
-                Book Nowss
+                Book Now
               </button>
             </div>
             <div className="md:hidden w-full p-3 flex ">

@@ -27,6 +27,8 @@ const Sign = () => {
     (state) => state.auth
   );
 
+  const idTrip = localStorage.getItem("idTrip");
+
   useEffect(() => {
     // check for error and show toast alert
     if (isError) {
@@ -34,8 +36,13 @@ const Sign = () => {
     }
     // if user logged in redirect him to home
     if (isSuccess) {
-      navigate("/");
-      // toast.success("register success");
+      if(idTrip){
+        // navigate(`/booking/${idTrip}`);
+        navigate("/booking");
+      }
+      else{
+        navigate("/");
+      }
     }
     // we need to reset everything
     dispatch(reset());
