@@ -36,6 +36,9 @@ export const tripSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    resetSuccess: (state) => {
+      state.isSuccess = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -55,5 +58,5 @@ export const tripSlice = createSlice({
   },
 });
 
-export const { reset } = tripSlice.actions;
+export const { reset, resetSuccess } = tripSlice.actions;
 export default tripSlice.reducer;

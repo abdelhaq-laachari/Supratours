@@ -52,20 +52,6 @@ const Sign = () => {
     e.preventDefault();
     setFormErrors(validate(formData));
     dispatch(logIn(formData));
-    // try {
-    //   await axios.post("user/login", formData).then((res) => {
-    //     const userId = res.data.user._id;
-    //     const token = res.data.Token;
-    //     setUser(res.data.user);
-    //     localStorage.setItem("userId", userId);
-    //   });
-    // } catch (error) {
-    //   // show toast error message if password input not empty
-    //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    //   if (password !== "" && email !== "" && regex.test(email)) {
-    //     toast.error("Incorrect information, please try again");
-    //   }
-    // }
   };
   // check for loading
   if (isLoading && email && password) {

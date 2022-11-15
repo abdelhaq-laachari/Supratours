@@ -27,6 +27,12 @@ const SearchForm = () => {
     if (isError) {
       toast.error(message);
     }
+    // if success redirect to result page and return this state to initial state
+    if (isSuccess) {
+      navigate("/result");
+      dispatch(reset());
+    }
+    dispatch(reset())
   }, [trips, isError, isSuccess, message, navigate, dispatch]);
 
   // handleInputChange function to get the value of the input
@@ -45,7 +51,6 @@ const SearchForm = () => {
       startDate: date,
     };
     dispatch(searchTrip(formData));
-    navigate("/result");
   };
 
   // check for loading

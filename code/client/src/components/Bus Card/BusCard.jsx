@@ -5,18 +5,21 @@ import Ctm from "../../assets/bus/ctm1.jpg";
 import { BiBus } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import NewCard from "./new";
-import { reset, searchTrip } from "../../features/trips/tripSlice";
+import { reset, resetSuccess, searchTrip } from "../../features/trips/tripSlice";
 import { useNavigate } from "react-router-dom";
 
 const BusCard = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { trips } = useSelector((state) => state.trip);
+  const { trips, isSuccess } = useSelector((state) => state.trip);
   const formData = JSON.parse(localStorage.getItem("formData"));
   useEffect(() => {
     dispatch(searchTrip(formData));
-    dispatch(reset())
+    // dispatch(reset())
   }, []);
+  if (isSuccess) {
+    dispatch(resetSuccess());
+  }
   // store trip id in local storage after clicking on book button
   const storeId = (id) => {
     // clear local storage
@@ -24,7 +27,7 @@ const BusCard = () => {
     // set id trip local storage
     localStorage.setItem("idTrip", id);
     // navigate to login page
-    navigate('/signIn')
+    navigate("/signIn");
   };
 
   return (
