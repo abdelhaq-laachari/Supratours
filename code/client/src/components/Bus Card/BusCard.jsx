@@ -5,11 +5,11 @@ import Ctm from "../../assets/bus/ctm1.jpg";
 import { BiBus } from "react-icons/bi";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import NewCard from "./new";
-import { reset, searchTrip } from "../../features/trips/tripSlice";
+import { searchTrip } from "../../features/trips/tripSlice";
 
 const BusCard = () => {
   const dispatch = useDispatch();
-  const { trips, isSuccess } = useSelector((state) => state.trip);
+  const { trips } = useSelector((state) => state.trip);
   const formData = JSON.parse(localStorage.getItem("formData"));
   useEffect(() => {
     dispatch(searchTrip(formData));
@@ -44,7 +44,7 @@ const BusCard = () => {
                 <div className="flex w-10 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 <div className="flex items-center">
                   <time className="flex text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    <AiOutlineClockCircle /> <span className="pl-2">6h</span>
+                    <AiOutlineClockCircle /> <span className="pl-2"> {trip.tripDuration} </span>
                   </time>
                 </div>
                 <div className="flex w-10 bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -58,7 +58,7 @@ const BusCard = () => {
                 </div>
                 <h1 className="md:hidden text-xl text-orange-400">80DH</h1>
               </div>
-              <NewCard />
+              {/* <NewCard /> */}
             </div>
             <div className="hidden md:flex w-40 md:justify-center md:items-center">
               <h1 className="text-3xl text-orange-400">80DH</h1>

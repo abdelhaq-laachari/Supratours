@@ -17,6 +17,9 @@ const tripSchema = mongoose.Schema(
     startTime: reqString,
     endTime: reqString,
     price: reqNumber,
+    tripDuration: {
+      type: String,
+    },
     station: [stationSchema],
     status: {
       type: Boolean

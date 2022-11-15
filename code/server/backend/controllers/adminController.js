@@ -213,6 +213,7 @@ const addTrip = asyncHandler(async (req, res) => {
     startTime,
     endTime,
     price,
+    // tripDuration,
     station,
     status,
     bus,
@@ -227,13 +228,29 @@ const addTrip = asyncHandler(async (req, res) => {
     !startTime ||
     !endTime ||
     !price ||
+    // !tripDuration ||
     !bus
   ) {
     res.status(400);
     throw new Error("Please fill in all field");
   }
+  // difference between two times
+function diff(start, end) {
+  start = start.split(":");
+  end = end.split(":");
+  var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+  var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+  var diff = endDate.getTime() - startDate.getTime();
+  var hours = Math.floor(diff / 1000 / 60 / 60);
+  diff -= hours * 1000 * 60 * 60;
+  var minutes = Math.floor(diff / 1000 / 60);
 
-  // create bus
+  return (
+    (hours <= 9 ? "0" : "") + hours + "h " + (minutes <= 9 ? "0" : "") + minutes 
+  );
+}
+
+  // create trip
   const trip = await Trip.create({
     startPoint: startPoint.charAt(0).toUpperCase() + startPoint.slice(1).toLowerCase(),
     endPoint: endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
@@ -242,6 +259,7 @@ const addTrip = asyncHandler(async (req, res) => {
     startTime,
     endTime,
     price,
+    tripDuration: diff(startTime, endTime),
     station,
     status,
     bus,

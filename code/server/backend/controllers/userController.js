@@ -129,7 +129,7 @@ const searchTrip = asyncHandler(async (req, res) => {
       endPoint.charAt(0).toUpperCase() + endPoint.slice(1).toLowerCase(),
     startDate,
   }).populate("bus", "busName numberOfSeats");
- 
+
   if (trip.length > 0) {
     const numberOfSeats = trip[0].bus.numberOfSeats;
     if (numberOfSeats > 0) {
