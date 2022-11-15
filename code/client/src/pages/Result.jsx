@@ -7,7 +7,7 @@ const Result = () => {
 
   return (
     <>
-      <div className="flex flex-col bg-slate-300 min-h-screen">
+      <div className="flex flex-col bg-[#f8f8f8] min-h-screen">
         <section className="bg-red-400">
           <Navbar />
         </section>

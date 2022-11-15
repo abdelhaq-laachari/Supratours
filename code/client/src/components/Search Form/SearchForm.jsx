@@ -22,7 +22,7 @@ const SearchForm = () => {
   const { trips, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.trip
   );
-  
+
   useEffect(() => {
     if (isError) {
       toast.error(message);
