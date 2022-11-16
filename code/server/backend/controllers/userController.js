@@ -144,6 +144,41 @@ const searchTrip = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Search for trip
+// @route   POST /users/SearchTrip
+// @access  Private
+
+// get trip by id
+// const getTripById = asyncHandler(async (req, res) => {
+//   const trip = await Trip.findById(req.params.id).populate(
+//     "bus",
+//     "busName numberOfSeats"
+//   );
+
+//   if (trip) {
+//     res.status(201).json(trip);
+//   } else {
+//     res.status(404);
+//     throw new Error("Trip not found");
+//   }
+// });
+
+const getTripById = asyncHandler(async (req, res) => {
+  // const { id } = req.params;
+
+  const trip = await Trip.findById(req.params.id).populate(
+    "bus",
+    "busName numberOfSeats"
+  );
+  const numberOfSeats = trip.bus.numberOfSeats;
+  if (numberOfSeats > 0) {
+    res.status(201).json(trip);
+  } else {
+    res.status(404);
+    throw new Error("There is no trip available");
+  }
+});
+
 // @desc    Booking trip
 // @route   POST /users/booking
 // @access  Private
@@ -244,4 +279,5 @@ module.exports = {
   myBooking,
   cancelTrip,
   generateToken,
+  getTripById,
 };

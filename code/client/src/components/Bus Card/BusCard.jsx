@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 const BusCard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = localStorage.getItem("user");
   const { trips, isSuccess } = useSelector((state) => state.trip);
   const formData = JSON.parse(localStorage.getItem("formData"));
   useEffect(() => {
@@ -26,7 +27,12 @@ const BusCard = () => {
     // set id trip local storage
     localStorage.setItem("idTrip", id);
     // navigate to login page
-    navigate("/signIn");
+    if(!user){
+      navigate("/signIn");
+    }
+    else{
+      navigate("/booking");
+    }
   };
 
   return (

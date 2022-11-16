@@ -4,6 +4,10 @@ import { AiOutlineWifi } from "react-icons/ai";
 import { IoTvSharp } from "react-icons/io5";
 import { GiCharging } from "react-icons/gi";
 import { FaLuggageCart } from "react-icons/fa";
+import Seats1 from "../../assets/bus/seats1.jpg";
+import Seats2 from "../../assets/bus/seats2.jpg";
+import Seats3 from "../../assets/bus/seats3.jpg";
+import Ctm1 from "../../assets/bus/ctm1.jpg";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
@@ -14,15 +18,11 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 SwiperCore.use([Autoplay]);
-const images = [
-  "https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-  "https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80",
-  "https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-];
+
 const BusInfo = () => {
   return (
     <>
-      <div className="flex flex-col space-y-2 px-3 w-3/5 min-h-screen bg-[#F8F8F8] rounded-sm shadow-sm">
+      <div className="flex flex-col space-y-6 px-5 pb-3 mb-4 w-3/5 min-h-screen bg-[#F8F8F8] rounded-sm shadow-lg">
         <div className="space-x-1 ">
           <span className="text-md font-medium text-gray-900 dark:text-white">
             From
@@ -55,26 +55,33 @@ const BusInfo = () => {
             }}
           >
             <SwiperSlide>
-              <img src={images[0]} alt="image" />
+              <img src={Ctm1} alt="image" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={images[1]} alt="image" />
+              <img src={Seats1} alt="image" />
             </SwiperSlide>
             <SwiperSlide>
-              <img src={images[2]} alt="image" />
+              <img src={Seats2} alt="image" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src={Seats3} alt="image" />
             </SwiperSlide>
           </Swiper>
         </div>
+        {/* line */}
+        <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div className="flex flex-col space-y-5">
           <span className="text-2xl font-bold">Bus Features</span>
           <div className="flex space-x-2">
-            <MdAir size={30} className="text-red-500" />
-            <AiOutlineWifi size={30} className="text-red-500" />
-            <IoTvSharp size={30} className="text-red-500" />
-            <GiCharging size={30} className="text-red-500" />
-            <FaLuggageCart size={30} className="text-red-500" />
+            <MdAir size={25} className=" text-gray-500 " />
+            <AiOutlineWifi size={25} className=" text-gray-500 " />
+            <IoTvSharp size={25} className=" text-gray-500 " />
+            <GiCharging size={25} className=" text-gray-500 " />
+            <FaLuggageCart size={25} className=" text-gray-500 " />
           </div>
         </div>
+        {/* line */}
+        <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div>
           <span className="text-2xl font-bold">Schedule and stations</span>
           <p className="text-md text-gray-500 dark:text-gray-400">
@@ -149,6 +156,8 @@ const BusInfo = () => {
             </div>
           </div>
         </div>
+        {/* line */}
+        <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <div>
           <span
           className="text-2xl font-bold"
@@ -160,6 +169,7 @@ const BusInfo = () => {
             Moroccan public transport company
           </p>
         </div>
+        <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"></hr>
       </div>
     </>
   );
