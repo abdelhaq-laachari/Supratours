@@ -10,8 +10,16 @@ const searchTrips = async (tripData) => {
   return response.data;
 };
 
+// get trip by id
+const getTripById = async (id) => {
+  const response = await axios.get(`user/getTripById/${id}`);
+  return response.data;
+};
+
+
 const tripService = {
   searchTrips,
+  getTripById,
 };
 
 export default tripService;

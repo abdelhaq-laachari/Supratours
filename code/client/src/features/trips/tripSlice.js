@@ -31,6 +31,24 @@ export const searchTrip = createAsyncThunk(
   }
 );
 
+// get trip by id
+export const getTripById = createAsyncThunk(
+  "trip/getTripById",
+  async (id, thunkAPI) => {
+    try {
+      return await tripService.getTripById(id);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const tripSlice = createSlice({
   name: "trip",
   initialState,
@@ -51,6 +69,19 @@ export const tripSlice = createSlice({
         state.trips = action.payload;
       })
       .addCase(searchTrip.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getTripById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTripById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.trips = action.payload;
+      })
+      .addCase(getTripById.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

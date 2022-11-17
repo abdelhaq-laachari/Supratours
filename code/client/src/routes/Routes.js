@@ -20,7 +20,7 @@ const routes = () => {
           <Route path="/" element={<App />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Services" element={<Services />} />
-          <Route path="/About" element={<About />} />
+          {/* <Route path="/About" element={<About />} /> */}
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Error" element={<Error />} />
           <Route path="/SignIn" element={<SignIn />} />

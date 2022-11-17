@@ -55,9 +55,6 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (user) {
     res.status(201).json({
-      _id: user.id,
-      firstName: user.firstName,
-      email: user.email,
       Token: generateToken(user._id),
     });
   } else {
@@ -172,7 +169,7 @@ const getTripById = asyncHandler(async (req, res) => {
   );
   const numberOfSeats = trip.bus.numberOfSeats;
   if (numberOfSeats > 0) {
-    res.status(201).json(trip);
+    res.status(201).json([trip]);
   } else {
     res.status(404);
     throw new Error("There is no trip available");
