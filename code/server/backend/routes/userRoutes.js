@@ -12,7 +12,6 @@ const {
   cancelTrip,
   getTripById,
 } = require("../controllers/userController"); // <--- Import the userController
-const { route } = require("./postRoutes");
 
 router.route("/register").post(registerUser); // <--- Create a route for the registerUser function
 router.route("/login").post(loginUser); // <--- Create a route for the loginUser function

@@ -100,7 +100,7 @@ const getAdmin = asyncHandler(async (req, res) => {
 
 const updateProfile = asyncHandler(async (req, res) => {
   const adminId = req.admin.id;
-  const admin = await Admin.findById(adminId);
+  const admin = await Admin.findById(adminId);  
 
   if (!admin) {
     res.status(404);
@@ -228,7 +228,6 @@ const addTrip = asyncHandler(async (req, res) => {
     !startTime ||
     !endTime ||
     !price ||
-    // !tripDuration ||
     !bus
   ) {
     res.status(400);
