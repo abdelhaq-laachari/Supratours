@@ -7,6 +7,7 @@
     "@date-io/date-fns": "^2.16.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mdi/react": "^1.6.1",
     "@mui/lab": "^5.0.0-alpha.105",
     "@mui/material": "^5.10.11",
     "@mui/x-date-pickers": "^5.0.5",

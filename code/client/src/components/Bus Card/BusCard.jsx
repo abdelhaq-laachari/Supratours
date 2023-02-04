@@ -45,7 +45,7 @@ const BusCard = () => {
   return (
     <>
       {trips?.map((trip) => (
-        <div key={trip._id} className="flex md:w-3/4 justify-center p-3">
+        <div key={trip._id} className="flex md:w-full justify-center pb-6 px-3">
           <div className="flex flex-col md:flex-row md:w-max rounded-lg bg-white shadow-lg">
             <img
               className="w-full h-52 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"

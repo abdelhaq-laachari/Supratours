@@ -1,4 +1,9 @@
 const mongoose = require("mongoose");
+const { reqString } = require("../helpers/required/required");
+
+const featuresSchema = mongoose.Schema({
+  featuresName: reqString,
+});
 
 const busSchema = mongoose.Schema(
   {
@@ -12,8 +17,11 @@ const busSchema = mongoose.Schema(
     },
   },
   {
+    busFeatures: [featuresSchema],
+  },
+  {
     timestamp: true,
   }
 );
 
-module.exports = mongoose.model("Bus", busSchema)
+module.exports = mongoose.model("Bus", busSchema);

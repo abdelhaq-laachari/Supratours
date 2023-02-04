@@ -1,18 +1,23 @@
 import React from "react";
 import BusCard from "../components/Bus Card/BusCard";
+import Filter from "../components/Filter/Filter";
 import Navbar from "../components/NavBar/NavBar";
 import SearchForm from "../components/Search Form/SearchForm";
 
 const Result = () => {
-
   return (
     <>
-      <div className="flex flex-col bg-[#f8f8f8] min-h-screen">
+      <div className="flex w-full flex-col bg-[#f8f8f8] min-h-screen">
         <section className="bg-red-400">
           <Navbar />
         </section>
-        <section className="flex flex-col items-center w-full ">
-          <BusCard />
+        <section className="flex justify-around w-[100%] my-5">
+          <div className="w-[25%]">
+            <Filter/>
+          </div>
+          <div className="w-[65%] ">
+            <BusCard />
+          </div>
         </section>
       </div>
     </>

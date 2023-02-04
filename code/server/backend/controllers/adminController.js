@@ -213,7 +213,6 @@ const addTrip = asyncHandler(async (req, res) => {
     startTime,
     endTime,
     price,
-    // tripDuration,
     station,
     status,
     bus,
