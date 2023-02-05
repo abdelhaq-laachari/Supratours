@@ -2,6 +2,7 @@ import React from "react";
 import BusInfo from "../components/Bus Card/BusInfo";
 import Navbar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
+import TicketOption from "../components/Ticket Option/TicketOption";
 
 const Booking = () => {
   return (
@@ -10,11 +11,14 @@ const Booking = () => {
         <section className=" bg-gray-400 ">
           <Navbar />
         </section>
-        <div>
-          <section>
+        <section className="flex w-full justify-around ">
+          <div className="w-[60%]">
             <BusInfo />
-          </section>
-        </div>
+          </div>
+          <div className="w-[30%]">
+            <TicketOption />
+          </div>
+        </section>
         <section>
           <Footer />
         </section>

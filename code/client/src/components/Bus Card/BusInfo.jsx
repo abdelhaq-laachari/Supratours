@@ -39,7 +39,7 @@ const BusInfo = () => {
       {trips?.map((trip) => (
         <div
           key={trip._id}
-          className="flex flex-col space-y-6 px-5 pb-3 mb-4 w-3/5 min-h-screen bg-[#F8F8F8] rounded-sm shadow-lg"
+          className="flex flex-col space-y-6 px-5 pb-3 mb-4 w-full min-h-screen bg-[#F8F8F8] rounded-sm shadow-lg"
         >
           <div className="space-x-1 ">
             <span className="text-md font-medium text-gray-900 dark:text-white">
