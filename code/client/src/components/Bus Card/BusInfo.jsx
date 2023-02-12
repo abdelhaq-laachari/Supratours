@@ -30,10 +30,11 @@ const BusInfo = () => {
   const { trips, isSuccess } = useSelector((state) => state.trip);
   useEffect(() => {
     dispatch(getTripById(idTrip));
-  }, []);
-  if (isSuccess) {
     dispatch(reset());
-  }
+  }, []);
+  // if (isSuccess) {
+  //   dispatch(reset());
+  // }
   return (
     <>
       {trips?.map((trip) => (

@@ -11,11 +11,11 @@ const Booking = () => {
         <section className=" bg-gray-400 ">
           <Navbar />
         </section>
-        <section className="flex w-full justify-around ">
-          <div className="w-[60%]">
+        <section className="flex flex-col md:flex-row w-full items-center md:items-start md:justify-around ">
+          <div className="w-[95%] md:w-[60%]">
             <BusInfo />
           </div>
-          <div className="w-[30%]">
+          <div className="w-[95%] md:w-[30%]">
             <TicketOption />
           </div>
         </section>

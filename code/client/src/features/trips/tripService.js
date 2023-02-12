@@ -4,9 +4,6 @@ import axios from "axios";
 const searchTrips = async (tripData) => {
   localStorage.setItem("formData", JSON.stringify(tripData))
   const response = await axios.post("user/searchTrip", tripData);
-  // if (response.data) {
-  //   localStorage.setItem("trips", JSON.stringify(response.data));
-  // }
   return response.data;
 };
 

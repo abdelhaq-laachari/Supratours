@@ -8,14 +8,14 @@ const Result = () => {
   return (
     <>
       <div className="flex w-full flex-col bg-[#f8f8f8] min-h-screen">
-        <section className="bg-red-400">
+        <section className="bg-gray-400">
           <Navbar />
         </section>
         <section className="flex justify-around w-[100%] my-5">
-          <div className="w-[25%]">
+          <div className="hidden md:flex md:w-[25%]">
             <Filter/>
           </div>
-          <div className="w-[65%] ">
+          <div className="w-[95%] md:w-[65%] ">
             <BusCard />
           </div>
         </section>

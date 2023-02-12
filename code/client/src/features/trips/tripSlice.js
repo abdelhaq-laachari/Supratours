@@ -62,6 +62,7 @@ export const tripSlice = createSlice({
     builder
       .addCase(searchTrip.pending, (state) => {
         state.isLoading = true;
+        state.isSuccess = false;
       })
       .addCase(searchTrip.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -71,6 +72,7 @@ export const tripSlice = createSlice({
       .addCase(searchTrip.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+        state.isSuccess = false;
         state.message = action.payload;
       })
       .addCase(getTripById.pending, (state) => {
