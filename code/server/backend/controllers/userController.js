@@ -181,7 +181,7 @@ const getTripById = asyncHandler(async (req, res) => {
 // @access  Private
 
 const bookingTrip = asyncHandler(async (req, res) => {
-  const userId = await User.findById(req.params.idUser);
+  const userId = await User.findById(req.user);
   const tripId = await Trip.findById(req.params.idTrip);
 
   const bus = await Bus.findById(tripId.bus);
@@ -194,28 +194,24 @@ const bookingTrip = asyncHandler(async (req, res) => {
       throw new Error("error");
     }
 
-    const ticket = await Booking.create({
-      user: req.params.idUser,
-      trip: req.params.idTrip,
-    });
-
-    if (ticket) {
-      // res.status(201).json({ message: "trip book successfully" });
-
-      res.status(201).json(numberOfSeats);
-      await Trip.findByIdAndUpdate(tripId, {
-        status: 0,
+      const ticket = await Booking.create({
+        user: userId,
+        trip: tripId,
+        numberOfSeats: number,
       });
-      await Bus.findByIdAndUpdate(tripId.bus, {
-        numberOfSeats: numberOfSeats - number,
-      });
+
+      if (ticket) {
+        await Bus.findByIdAndUpdate(tripId.bus, {
+          numberOfSeats: numberOfSeats - number,
+        });
+        res.status(201).json({ message: "trip book successfully" });
+      } else {
+        res.status(400);
+        throw new Error("error 2");
+      }
     } else {
-      res.status(400);
-      throw new Error("error 2");
-    }
-  } else {
-    res.status(404);
-    throw new Error("there is no available seats");
+      res.status(404);
+      throw new Error("there is no available seats");
   }
 });
 

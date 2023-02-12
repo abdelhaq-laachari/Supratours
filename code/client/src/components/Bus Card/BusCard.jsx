@@ -89,7 +89,7 @@ const BusCard = () => {
             </div>
             <div className="hidden w-40  md:flex md:flex-col md:justify-between md:items-center ">
               <h1 className="text-3xl h-1/2 w-full flex justify-center items-end text-orange-400">
-                80DH
+                {trip.price} DH
               </h1>
               <button
                 className="hover:bg-orange-500 bg-orange-400 text-white text-sm px-3 py-3 w-full"

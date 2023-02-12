@@ -19,7 +19,7 @@ router.route("/me").get(getMe); // <--- Create a route for the getMe function
 router.route("/logout").post(logoutUser); // <--- Create a route for the logoutUser function
 router.route("/searchTrip").post(searchTrip); // <--- Create a route for the search trip function
 router.route("/getTripById/:id").get(getTripById); // <--- Create a route for the search trip function
-router.route("/booking/:idUser/:idTrip").post(protect, bookingTrip); // <--- Create a route for the booking trip function
+router.route("/booking/:idTrip").post(protect, bookingTrip); // <--- Create a route for the booking trip function
 router.route("/myBooking/:id").get(protect, myBooking); // <--- Create a route for the booking trip function
 router.route("/cancelTrip/:tripId").delete(protect, cancelTrip); // <--- Create a route for the cancel trip function
 

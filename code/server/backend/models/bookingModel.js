@@ -12,9 +12,10 @@ const bookingSchema = mongoose.Schema(
       required: true,
       ref: "Trip",
     },
-  },
-  {
-    timestamps: true,
+    numberOfSeats: {
+      type: Number,
+      required: true,
+    },
   }
 );
 
